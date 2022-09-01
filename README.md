@@ -49,7 +49,7 @@ If you encounter any issues running the above commands, follow the link above to
 
 ### Setting up Dev
 
-This section includes details on how what a developer must do in order to start developing the project further:
+This section includes details on what a developer must do in order to start developing the project further:
 
 Verify you are on the master branch of the Algorithms repository and Git clone the project.
 
@@ -65,7 +65,7 @@ After cloning the project `cd` into the Algorithms directory. Once in the root d
 
 **Note**: This step is optional! The listed packages `autopep8` and `pycodestlye` are used primarily for code formatting and adhering to the PEP8 style guide. More info on PEP8 [here][PEP8]. You can read more on using `autopep8` to format your Python code in the **Style guide** section below.
 
-- `cd` into the project
+- cd into the project
     ```sh
     (venv) $ cd Algorithms
     ```
@@ -73,6 +73,82 @@ After cloning the project `cd` into the Algorithms directory. Once in the root d
     ```sh
   (venv) $ pip install -r requirements.txt
     ```
+
+
+
+## Developing
+
+### Prerequisites
+Technical questions for this project will be sourced from HackerRank. If you don't have a HackerRank account, you can get started with one [here][HackerRank]. Alternatively, you can use other popular platforms such as [LeetCode][LeetCode].
+
+### Project Structure
+Below is an example of the project structure:
+
+```shell
+.
+├── easy
+|    ├──  question1  
+|        ├──  algorithm.txt
+|        ├──  main.py
+|        ├──  problem.md
+|        ├──  solution.py
+|        └──  test.py
+|    ├──  question2
+├──  medium
+├──  hard
+├──  examples
+|    ├──  easy
+         ├──  example1
+|        └──  example2
+|    ├──  medium
+|    └──  hard
+├──  template
+|    ├──  java
+|    ├──  python
+|    └──  etc
+```
+
+##### Directories
+- **easy**: Directory to store technical questions implemented with an easy level.
+- **medium**: Directory to store technical questions implemented with a medium level.
+- **hard**: Directory to store technical questions implemented with a hard level.
+- **examples**: Directory for provided example questions fully implemented of all levels.
+- **templates**: Directory providing question templates for different programming languages.
+
+##### Files
+- algorithm.txt: A text file containing sequential logical steps (pseudocode) to solving a single problem.
+- main.py: Contains the solution translation and code according to a specific algorithm.
+- problem.md: Contains the technical question on HackerRank provided in markdown format.
+- solution.py: Contains the solution code that passes all tests on the HackerRank platform.
+- test.py: Contains all tests for the solution code in the main.py for a given question.
+
+### Work Flow
+Follow this section to get started working on technical coding questions locally.
+
+1. Log in to your HackerRank account and navigate to prepare > algorithms > implementation.
+2. Find a problem question that you would like to solve.
+3. Create a directory for the problem locally to get started: `cp ./template/<language> ./easy/<question_title> -r`
+
+    ```shell
+    $ # Linux/macOS
+    $ # Create a dir for the problem 'Find digits' in the easy dir using the Python template
+    $ cp ./template/python ./easy/find_digits -r
+    ```
+    ```shell
+    > # Windows
+    > # Create a dir for the problem 'Encryption' in the medium dir using the Java template
+    > # Right-click on the java dir in .\templates and paste it into the .\medium dir
+    ```
+
+    The above command and steps will create a directory for a given particular technical question. Once made `cd` into the directory and begin your implementation.
+   
+4. Outline your algorithm in pseudocode in the file: `algorithm.txt`
+5. Using a TDD approach, design tests for your functions in the file: `test.py`
+6. Translate your algorithm solution into code in adherence to written tests in the file: `main.py`
+7. After passing all local tests, run your implemented solution on the HackerRank platform.
+8. After all tests pass on HackerRank, paste the source code solution in the file: `solution.py`
+9. Commit your solution and push it to GitHub to share your solution with other developers.
+
 
 ## Licensing
 MIT License: A short and simple permissive license with conditions only requiring preservation of copyright and license notices.
@@ -89,3 +165,5 @@ MIT License: A short and simple permissive license with conditions only requirin
    [Python-Install]: <https://gist.github.com/MichaelCurrin/57caae30bd7b0991098e9804a9494c23>
    [venv]: <https://docs.python.org/3/tutorial/venv.html>
    [PEP8]: <https://peps.python.org/pep-0008/>
+   [HackerRank]: <https://www.hackerrank.com/>
+   [LeetCode]: <https://leetcode.com/>
