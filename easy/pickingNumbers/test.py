@@ -1,10 +1,10 @@
 import unittest
 
 from main import (
-    # filter_values_by_pair,
+    filter_values_by_pair,
     # get_max_subarray,    
     get_subarray_pairs,
-    # picking_numbers,
+    picking_numbers,
     remove_duplicate_values
 )
 
@@ -75,8 +75,56 @@ class TestGetSubarrayPairs(unittest.TestCase):
 
 class TestFilterValueByPair(unittest.TestCase):
 
-    def test_should_filter_values_by_pair_returns_list(self) -> None:
-        pass
+    def test_should_return_list_with_list_of_integers(self) -> None:
+         # Given
+        pairs = [(3, 4)]
+        expected = type(VALUES)
+
+        # When
+        actual = filter_values_by_pair(pairs, sorted(VALUES))
+
+        # Then
+        self.assertIsInstance(actual, expected)
+        self.assertIsInstance(actual[0], expected)
+        self.assertIsInstance(actual[0][0], int)
+
+    def test_should_create_new_filtered_list_from_subarray_pair(self) -> None:
+        # Given
+        pairs = [(3, 4), (4, 5), (5, 6)]
+        expected = [
+            [3, 3, 4],
+            [4, 5],
+            [5, 6]
+        ]
+
+        # When 
+        actual = filter_values_by_pair(pairs, sorted(VALUES))
+
+        # Then
+        self.assertEqual(actual, expected)
+
+
+class TestPickingNumbers(unittest.TestCase):
+
+    def test_should_return_integer(self) -> None:
+         # Given
+        expected = int
+
+        # When
+        actual = picking_numbers(len(VALUES), VALUES)
+
+        # Then
+        self.assertIsInstance(actual, expected)
+    
+    def test_should_return_the_length_of_largest_subarray(self) -> None:
+        # Given
+        expected = 3
+
+        # When
+        actual = picking_numbers(len(VALUES), VALUES)
+
+        # Then
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
