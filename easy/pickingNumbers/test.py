@@ -2,7 +2,7 @@ import unittest
 
 from main import (
     filter_values_by_pair,
-    # get_max_subarray,    
+    filter_values_by_digit,    
     get_subarray_pairs,
     picking_numbers,
     remove_duplicate_values
@@ -104,6 +104,23 @@ class TestFilterValueByPair(unittest.TestCase):
         self.assertEqual(actual, expected)
 
 
+class TestFilterValueByDigit(unittest.TestCase):
+
+    def test_should_create_new_filtered_list_of_digits_appearing_more_than_once(self) -> None:
+        # Given
+        numbers = [1, 1, 2, 3, 3, 3, 3]
+        expected = [
+            [1, 1],
+            [3, 3, 3, 3]
+        ]
+
+        # When
+        actual = filter_values_by_digit(numbers)
+
+        # Then
+        self.assertNotIn(2, actual)
+        self.assertEqual(actual, expected)
+
 class TestPickingNumbers(unittest.TestCase):
 
     def test_should_return_integer(self) -> None:
@@ -111,7 +128,7 @@ class TestPickingNumbers(unittest.TestCase):
         expected = int
 
         # When
-        actual = picking_numbers(len(VALUES), VALUES)
+        actual = picking_numbers(VALUES)
 
         # Then
         self.assertIsInstance(actual, expected)
@@ -121,7 +138,7 @@ class TestPickingNumbers(unittest.TestCase):
         expected = 3
 
         # When
-        actual = picking_numbers(len(VALUES), VALUES)
+        actual = picking_numbers(VALUES)
 
         # Then
         self.assertEqual(actual, expected)
