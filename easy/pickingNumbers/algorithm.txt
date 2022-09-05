@@ -14,5 +14,9 @@ Solution: apexDev37
     6) Filter array: values, based on each tuple pair.
     7) Append each new filtered list into the list: subarrays
 
-    8) Get the largest sized list (subarray) in the list: subarrays
-    9) Output the lenght of the largest sized list (subarray) in the list: subarrays
+    8) Iterate through the array: values.
+    9) Filter array: values, based on each value in values that appears more than once.
+    10) Append each new filtered list into the list: subarrays
+
+    11) Get the largest sized list (subarray) in the list: subarrays
+    12) Output the lenght of the largest sized list (subarray) in the list: subarrays
