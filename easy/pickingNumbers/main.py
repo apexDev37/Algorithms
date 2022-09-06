@@ -10,8 +10,7 @@
 def picking_numbers(numbers: list[int]) -> int:
     non_duplicate_numbers = remove_duplicate_numbers(sorted(numbers))
     subarray_pairs = get_subarray_pairs(non_duplicate_numbers)
-    subarrays = filter_numbers_by_pair(subarray_pairs, sorted(numbers))
-    subarrays += filter_numbers_by_digit(sorted(numbers))
+    subarrays = get_subarrays(subarray_pairs, sorted(numbers))
     return max(len(subarray) for subarray in subarrays)
 
 def remove_duplicate_numbers(numbers: list[int]) -> list[int]:
@@ -24,6 +23,10 @@ def get_subarray_pairs(numbers: list[int]) -> list[tuple]:
         if numbers[n + 1] - numbers[n] <= 1:
             pairs.append((numbers[n], numbers[n + 1]))
     return pairs
+
+def get_subarrays(subarray_pairs: list[tuple], numbers: list[int]) -> list[list[int]]:
+    return (filter_numbers_by_pair(subarray_pairs, numbers)
+            + filter_numbers_by_digit(numbers))
 
 def filter_numbers_by_pair(subarray_pairs: list[tuple], numbers: list[int]) -> list[list[int]]:
     return [list(filter(lambda x: x in subarray, numbers)) 
