@@ -25,7 +25,7 @@ def get_subarray_pairs(numbers: list[int]) -> list[tuple]:
             pairs.append((numbers[n], numbers[n + 1]))
     return pairs
 
-def filter_numbers_by_pair(subarray_pairs: tuple, numbers: list[int]) -> list[int]:
+def filter_numbers_by_pair(subarray_pairs: list[tuple], numbers: list[int]) -> list[list[int]]:
     return [list(filter(lambda x: x in subarray, numbers)) 
             for subarray in subarray_pairs]
 
