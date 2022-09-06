@@ -1,11 +1,11 @@
 import unittest
 
 from main import (
-    filter_values_by_pair,
-    filter_values_by_digit,    
+    filter_numbers_by_pair,
+    filter_numbers_by_digit,    
     get_subarray_pairs,
     picking_numbers,
-    remove_duplicate_values
+    remove_duplicate_numbers
 )
 
 # ---------------------------- Tests ---------------------------- #
@@ -16,30 +16,30 @@ Script: main.py
 """
 
 
-SIZE: int = 6
-VALUES: list[int] = [4, 6, 5, 3, 3, 1]
+NUMBERS: list[int] = [4, 6, 5, 3, 3, 1]
 
 
-class TestRemoveDuplicateValues(unittest.TestCase):
+
+class TestRemoveDuplicateNumbers(unittest.TestCase):
 
     def test_should_return_list_of_integers(self) -> None:
         # Given
-        expected = type(VALUES)
+        expected = type(NUMBERS)
 
         # When
-        actual = remove_duplicate_values(sorted(VALUES))
+        actual = remove_duplicate_numbers(sorted(NUMBERS))
 
         # Then
         self.assertIsInstance(actual, expected)
         self.assertIsInstance(actual[0], int)
 
-    def test_should_no_duplicate_values_exist_in_return_list(self) -> None:
+    def test_should_remove_duplicate_numbers_in_given_list(self) -> None:
         # Given
         duplicates = [1, 2, 2, 3, 4, 4, 4, 5, 5]
         expected = [1, 2, 3, 4, 5]
          
         # When
-        actual = remove_duplicate_values(duplicates)
+        actual = remove_duplicate_numbers(duplicates)
         
         # Then
         self.assertNotEqual(actual, duplicates)
@@ -50,38 +50,38 @@ class TestGetSubarrayPairs(unittest.TestCase):
 
     def test_should_return_list_of_tuples(self) -> None:
         # Given
-        values = sorted(remove_duplicate_values(VALUES))
-        expected = type(VALUES)
+        numbers = remove_duplicate_numbers(sorted(NUMBERS))
+        expected = type(NUMBERS)
 
         # When
-        actual = get_subarray_pairs(values)
+        actual = get_subarray_pairs(numbers)
 
         # Then
         self.assertIsInstance(actual, expected)
         self.assertIsInstance(actual[0], tuple)
         self.assertIsInstance(actual[0][0], int)
 
-    def test_should_return_list_of_tuples_with_difference_less_than_two(self) -> None:
+    def test_should_return_list_of_tuples_pairs_with_difference_less_than_two(self) -> None:
         # Given
-        values = sorted(remove_duplicate_values(VALUES))
+        numbers = remove_duplicate_numbers(sorted(NUMBERS))
         expected = [(3, 4), (4, 5), (5, 6)]
 
         # When
-        actual = get_subarray_pairs(values)
+        actual = get_subarray_pairs(numbers)
 
         # Then
         self.assertEqual(actual, expected)
 
 
-class TestFilterValueByPair(unittest.TestCase):
+class TestFilterNumbersByPair(unittest.TestCase):
 
     def test_should_return_list_with_list_of_integers(self) -> None:
          # Given
         pairs = [(3, 4)]
-        expected = type(VALUES)
+        expected = type(NUMBERS)
 
         # When
-        actual = filter_values_by_pair(pairs, sorted(VALUES))
+        actual = filter_numbers_by_pair(pairs, sorted(NUMBERS))
 
         # Then
         self.assertIsInstance(actual, expected)
@@ -98,15 +98,15 @@ class TestFilterValueByPair(unittest.TestCase):
         ]
 
         # When 
-        actual = filter_values_by_pair(pairs, sorted(VALUES))
+        actual = filter_numbers_by_pair(pairs, sorted(NUMBERS))
 
         # Then
         self.assertEqual(actual, expected)
 
 
-class TestFilterValueByDigit(unittest.TestCase):
+class TestFilterNumbersByDigit(unittest.TestCase):
 
-    def test_should_create_new_filtered_list_of_digits_appearing_more_than_once(self) -> None:
+    def test_should_create_new_list_of_digits_appearing_more_than_once(self) -> None:
         # Given
         numbers = [1, 1, 2, 3, 3, 3, 3]
         expected = [
@@ -115,7 +115,7 @@ class TestFilterValueByDigit(unittest.TestCase):
         ]
 
         # When
-        actual = filter_values_by_digit(numbers)
+        actual = filter_numbers_by_digit(numbers)
 
         # Then
         self.assertNotIn(2, actual)
@@ -128,7 +128,7 @@ class TestPickingNumbers(unittest.TestCase):
         expected = int
 
         # When
-        actual = picking_numbers(VALUES)
+        actual = picking_numbers(NUMBERS)
 
         # Then
         self.assertIsInstance(actual, expected)
@@ -138,7 +138,7 @@ class TestPickingNumbers(unittest.TestCase):
         expected = 3
 
         # When
-        actual = picking_numbers(VALUES)
+        actual = picking_numbers(NUMBERS)
 
         # Then
         self.assertEqual(actual, expected)
