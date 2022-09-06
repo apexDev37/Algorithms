@@ -4,18 +4,18 @@ Level: Easy
 Auther: wanbo
 Solution: apexDev37
 
-    1) Sort the array of parameter: values, from the function: picking_numbers.
-    2) Remove the duplicate integers in the arrays: values.
+    1) Sort the array of parameter: numbers, from the function: picking_numbers.
+    2) Remove the duplicate integers in the arrays: numbers.
 
-    3) Iterate through the array: values, compute the difference between each element pair.    
+    3) Iterate through the array: numbers, compute the difference between each element pair.    
     4) If the difference is (1 <=), append tuple to new array: subarray_pairs. 
     
     5) Iterate through the array: subarray_pairs.
-    6) Filter array: values, based on each tuple pair.
+    6) Filter array: numbers, based on each tuple pair.
     7) Append each new filtered list into the list: subarrays
 
-    8) Iterate through the array: values.
-    9) Filter array: values, based on each value in values that appears more than once.
+    8) Iterate through the array: numbers.
+    9) Filter array: numbers, based on each value in numbers that appears more than once.
     10) Append each new filtered list into the list: subarrays
 
     11) Get the largest sized list (subarray) in the list: subarrays
