@@ -1,12 +1,38 @@
 [Pseudocode]
-Question: <HackerRank problem Name>
-Level: <HackerRank problem Level: [easy, medium, hard]>
-Auther: <HackerRank problem Author>
-Solution: <your GitHub username>
+Question: Climbing the Leaderboard
+Level: medium
+Author: Shafaet
+Solution: apexDev37
 
-    [Example]
-    Outline steps for your algorithmic approach:
 
-        1) Step one
-        2) Step two
-        3) Step three
+        1) Iterate through formal parameter: player_scores from last to first element.
+
+                (Example)
+                    List: [5, 35, 50, 120]
+                    Output: 120, 50, 35, 5
+
+        2) Verify if the last element in player_scores is > first element in leaderboard.
+        3) If greater, update player_rank to value 1.
+
+
+        4) Verify if score in player_scores, exists in leaderboard.
+        5) If exists, skip computation of updating leaderboard.
+        6) Remove all duplicates from the leaderboard: list.
+        7) Sort the elements in the leaderboard: list in descending order.
+        7) Retrieve the index of the score from the manipulated leaderboard: list.
+        8) Assign the retrieved score index to rank: variable.
+        9) Update the player_rank: list with the rank at the score: index in player_scores: list.
+
+
+        10) Append score in player_scores to leaderboard, if it passes the following conditions
+
+                i) Score is not greater than the max score in the leaderboard
+                ii) Score does not already exist in the leaderboard
+
+        11) Remove all duplicates from the leaderboard: list.
+        12) Sort the elements in the leaderboard: list in descending order.
+        13) Retrieve the index of the score from the manipulated leaderboard: list.
+        14) Assign the retrieved score index to rank: variable.
+        15) Update the player_rank: list with the rank at the score: index in player_scores: list.
+
+        16) Return the player_rank: list.
