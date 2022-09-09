@@ -1,22 +1,26 @@
 """
 || HackerRank
-    Problem: 'problem name' 
-    Level: 'problem level'
-    Author: 'problem auther'
-    Implementation: 'your GitHub username'
+    Problem: Climbing the Leaderboard 
+    Level: medium
+    Author: Shafaet
+    Implementation: apexDev37
 """
 
-# This is main entry point function to complete
-# on the HackerRank platform. 
-# Rename as per specified
 
-def function_name():
+def climbing_leaderboard(leaderboard:list[int], player_scores:list[int]) -> list[int]:
     pass
 
+def update_highscore_rank(score:int, player_rank:list[int]) -> list[int]:
+    player_rank[player_rank.index(score)] = 1
+    return player_rank
+
+def is_highscore(score:int, leaderboard:list[int]) -> bool:
+    return score > leaderboard[0]
 
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+    leaderboard = [100, 90, 90, 80, 75, 60]
+    player_scores = [50, 65, 77, 90, 102]
+    print('Player Ranks: ', climbing_leaderboard(leaderboard, player_scores))
 
 
 if __name__ == "__main__":
