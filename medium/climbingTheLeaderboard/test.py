@@ -2,7 +2,9 @@ import unittest
 
 from main import (
     is_highscore,
-    update_highscore_rank
+    update_highscore_rank,
+    update_leaderboard,
+    get_player_rank    
 )
 
 
@@ -58,5 +60,48 @@ class TestUpdatePlayerRank(unittest.TestCase):
         self.assertIn(1, actual)
         self.assertEqual(actual, expected)
 
-class TestExistsInLeaderboard(unittest.TestCase):
-    pass
+class TestUpdateLeaderboard(unittest.TestCase):
+    
+    def test_should_update_and_prepare_leaderboard_with_given_player_score(self):
+        """"
+        Tests that a given score parameter is updated in the leaderboard list.
+        Prepares leaderboard list to retrieve the player rank from a given score.
+
+        Asserts:
+            - Returns list of integers
+            - Score is present in leaderboard
+            - Leaderboard is ordered in desc order
+        """
+
+        # Given
+        score = 70
+        expected = [100, 70, 50, 40, 20, 10]
+
+        # When
+        actual = update_leaderboard(score, LEADERBOARD)
+
+        # Then
+        self.assertIsInstance(actual, list)
+        self.assertIsInstance(actual[0], int)
+        self.assertIn(score, actual)
+        self.assertEqual(actual, expected)
+        self.assertGreater(actual[0], actual[-1])
+
+class TestGetPlayerRank(unittest.TestCase):
+
+    def test_should_retrieve_the_player_rank_based_on_single_game_score(self):
+
+        # Given
+        score = 40
+        expected = 3
+        total_ranks = len(set(LEADERBOARD))
+
+        # When
+        updated_leaderboard = update_leaderboard(score, LEADERBOARD)
+        actual = get_player_rank(score, updated_leaderboard)
+
+        # Then
+        self.assertIsInstance(actual, int)
+        self.assertGreaterEqual(actual, 1)
+        self.assertLessEqual(actual, total_ranks)
+        self.assertEqual(actual, expected)
