@@ -9,14 +9,8 @@
 
 def climbing_leaderboard(leaderboard:list[int], player_scores:list[int]) -> list[int]:
     player_ranks = player_scores
-    rank = 0
     for score in reversed(player_scores):
-        if is_highscore(score, leaderboard):
-            player_ranks = update_highscore_rank(score, player_ranks)
-        else:
-            updated_leaderboard =  update_leaderboard(score, leaderboard)
-            rank = get_player_rank(score, updated_leaderboard)
-            player_ranks = update_player_ranks(rank, score, player_ranks)
+        pass
     return player_ranks
 
 def update_highscore_rank(score:int, player_ranks:list[int]) -> list[int]:
@@ -37,9 +31,14 @@ def get_player_rank(score:int, leaderboard:list[int]) -> int:
     player_rank = leaderboard.index(score)
     return player_rank + 1
 
-def update_player_ranks(rank:int, score:int, player_ranks:list[int]) -> int:
-    index = player_ranks.index(score)
-    player_ranks[index] = rank
+def update_player_ranks(score:int, leaderboard:list[int]) -> list[int]:
+    player_ranks = []
+    if is_highscore(score, leaderboard):
+        player_ranks = update_highscore_rank(score, player_ranks)
+    else:
+        updated_leaderboard =  update_leaderboard(score, leaderboard)
+        rank = get_player_rank(score, updated_leaderboard)
+        player_ranks.append(rank)
     return player_ranks
 
 def main() -> None:
