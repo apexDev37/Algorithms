@@ -6,12 +6,14 @@
     Implementation: apexDev37
 """
 
+import bisect
 
 def climbing_leaderboard(leaderboard:list[int], player_scores:list[int]) -> list[int]:
-    player_ranks = player_scores
+    player_ranks = []
+    leaderboard = list(dict.fromkeys(leaderboard))[::-1]
     for score in reversed(player_scores):
-        pass
-    return player_ranks
+        player_ranks.extend(update_player_ranks(score, leaderboard))
+    return list(reversed(player_ranks))
 
 def update_highscore_rank(score:int, player_ranks:list[int]) -> list[int]:
     player_ranks[player_ranks.index(score)] = 1
@@ -34,7 +36,7 @@ def get_player_rank(score:int, leaderboard:list[int]) -> int:
 def update_player_ranks(score:int, leaderboard:list[int]) -> list[int]:
     player_ranks = []
     if is_highscore(score, leaderboard):
-        player_ranks = update_highscore_rank(score, player_ranks)
+        player_ranks.append(1)
     else:
         updated_leaderboard =  update_leaderboard(score, leaderboard)
         rank = get_player_rank(score, updated_leaderboard)
