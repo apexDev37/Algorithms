@@ -113,15 +113,15 @@ class TestGetPlayerRank(unittest.TestCase):
 
 class TestUpdatePlayerRank(unittest.TestCase):
 
-    def test_should_update_given_player_score_with_corresponding_player_rank(self):
+    def test_should_update_single_player_rank_by_given_score(self):
 
         # Given
         rank = 2
         score = 50
-        expected = [5, 25, 2, 120]
+        expected = [2]
 
         # When
-        actual = update_player_ranks(rank, score, PLAYER_SCORES)
+        actual = update_player_ranks(score, LEADERBOARD)
         
         # Then
         self.assertIsInstance(actual, list)
