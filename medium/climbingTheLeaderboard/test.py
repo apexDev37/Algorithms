@@ -144,3 +144,7 @@ class TestClimbingTheLeaderboard(unittest.TestCase):
         self.assertIsInstance(actual, list)
         self.assertIsInstance(actual[0], int)
         self.assertEqual(actual, expected)
+
+
+if __name__ == '__main__':
+    unittest.main()
