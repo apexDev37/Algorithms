@@ -12,8 +12,9 @@ def climbing_leaderboard(leaderboard:list[int], player_scores:list[int]) -> list
     player_ranks = []
     leaderboard = list(dict.fromkeys(leaderboard))[::-1]
     for score in reversed(player_scores):
-        player_ranks.extend(update_player_ranks(score, leaderboard))
-    return list(reversed(player_ranks))
+        rank = get_player_rank(score, leaderboard)
+        player_ranks.append(rank)
+    return player_ranks[::-1]
 
 def update_highscore_rank(score:int, player_ranks:list[int]) -> list[int]:
     player_ranks[player_ranks.index(score)] = 1
@@ -30,8 +31,8 @@ def update_leaderboard(score:int, leaderboard:list[int]) -> list[int]:
     return sorted(non_duplicates, reverse=True)
     
 def get_player_rank(score:int, leaderboard:list[int]) -> int:
-    player_rank = leaderboard.index(score)
-    return player_rank + 1
+    player_rank = bisect.bisect_right(leaderboard, score)
+    return (len(leaderboard) - player_rank) + 1
 
 def update_player_ranks(score:int, leaderboard:list[int]) -> list[int]:
     player_ranks = []
