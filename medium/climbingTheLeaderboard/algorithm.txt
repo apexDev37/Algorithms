@@ -1,0 +1,21 @@
+[Pseudocode]
+Question: Climbing the Leaderboard
+Level: medium
+Author: Shafaet
+Solution: apexDev37
+
+
+        1) Import the bisect module
+
+        2) Remove all duplicates from the leaderboard list
+        3) Sort all list items in ascending order
+
+
+        4) Create a new list: player_ranks, to store player ranks
+        5) Iterate through the player_scores in reversed order
+        
+        6) Bisect right for each player score in the leaderboard
+        7) Assign the return value of the bisect right to a rank: variable
+        8) Append the rank variable into the player_ranks: list
+        
+        9) Return a reversed player_ranks: list
