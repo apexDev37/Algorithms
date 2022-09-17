@@ -15,34 +15,10 @@ def climbing_leaderboard(leaderboard:list[int], player_scores:list[int]) -> list
         rank = get_player_rank(score, leaderboard)
         player_ranks.append(rank)
     return player_ranks[::-1]
-
-def update_highscore_rank(score:int, player_ranks:list[int]) -> list[int]:
-    player_ranks[player_ranks.index(score)] = 1
-    return player_ranks
-
-def is_highscore(score:int, leaderboard:list[int]) -> bool:
-    return score > leaderboard[0]
-
-def update_leaderboard(score:int, leaderboard:list[int]) -> list[int]:
-    updated_leaderboard = []
-    updated_leaderboard.extend(leaderboard)
-    updated_leaderboard.append(score)
-    non_duplicates = set(updated_leaderboard)
-    return sorted(non_duplicates, reverse=True)
     
 def get_player_rank(score:int, leaderboard:list[int]) -> int:
     player_rank = bisect.bisect_right(leaderboard, score)
     return (len(leaderboard) - player_rank) + 1
-
-def update_player_ranks(score:int, leaderboard:list[int]) -> list[int]:
-    player_ranks = []
-    if is_highscore(score, leaderboard):
-        player_ranks.append(1)
-    else:
-        updated_leaderboard =  update_leaderboard(score, leaderboard)
-        rank = get_player_rank(score, updated_leaderboard)
-        player_ranks.append(rank)
-    return player_ranks
 
 def main() -> None:
     leaderboard = [100, 100, 50, 40, 40, 20, 10]
