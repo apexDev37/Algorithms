@@ -22,7 +22,7 @@ PLAYER_SCORES: list[int] = [5, 25, 50, 120]
 
 class TestGetPlayerRank(unittest.TestCase):
 
-    def test_should_retrieve_the_player_rank_based_on_single_game_score(self):
+    def test_should_retrieve_the_player_rank_based_on_single_game_score(self) -> None:
 
         # Given
         score = 50
@@ -41,7 +41,7 @@ class TestGetPlayerRank(unittest.TestCase):
 
 class TestGetPlayerRanks(unittest.TestCase):
 
-    def test_should_get_player_ranks_based_on_given_player_scores(self):
+    def test_should_get_player_ranks_based_on_given_player_scores(self) -> None:
 
         # Given
         expected = [1, 2, 4, 6]
@@ -57,7 +57,7 @@ class TestGetPlayerRanks(unittest.TestCase):
 
 class TestClimbingTheLeaderboard(unittest.TestCase):
 
-    def test_should_return_player_ranks_from_leaderboard_for_all_player_scores(self):
+    def test_should_return_player_ranks_from_leaderboard_for_all_player_scores(self) -> None:
 
         # Given
         expected = [6, 4, 2, 1]
