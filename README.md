@@ -25,7 +25,7 @@ $ python3 --version
 > py --version
 ```
 
-The output should be a specific version of a Python installation. If that's not the case, you need to have Python installed. You can follow this gist for installing Python on your target OS [here][Python-Install].
+> The output should be a specific version of a Python installation. If that's not the case, you need to have Python installed. You can follow this gist for installing Python on your target OS [here][Python-Install].
 
 ##### Additional Requirements
 Though not required to get started working with this repository, it's best practice to work in and develop in a Python virtual environment. However, you can go straight into coding solutions to problem questions locally without creating a virtual environment. In this case, you can jump ahead to the **Setting up Dev** section. Otherwise, follow the instructions below to set up a virtual environment. You can read further official documentation [here][venv], on Python virtual environments.
@@ -98,7 +98,7 @@ Below is an example of the project structure:
 ├──  hard
 ├──  examples
 |    ├──  easy
-         ├──  example1
+|         ├──  example1
 |        └──  example2
 |    ├──  medium
 |    └──  hard
@@ -116,11 +116,11 @@ Below is an example of the project structure:
 - **templates**: Directory providing question templates for different programming languages.
 
 ##### Files
-- algorithm.txt: A text file containing sequential logical steps (pseudocode) to solving a single problem.
-- main.py: Contains the solution translation and code according to a specific algorithm.
-- problem.md: Contains the technical question on HackerRank provided in markdown format.
-- solution.py: Contains the solution code that passes all tests on the HackerRank platform.
-- test.py: Contains all tests for the solution code in the main.py for a given question.
+- **algorithm.txt**: A text file containing sequential logical steps (pseudocode) to solving a single problem.
+- **main.py**: Contains the solution translation and code according to a specific algorithm.
+- **problem.md**: Contains the technical question on HackerRank provided in markdown format.
+- **solution.py**: Contains the solution code that passes all tests on the HackerRank platform.
+- **test.py**: Contains all tests for the solution code in the main.py for a given question.
 
 ### Work Flow
 Follow this section to get started working on technical coding questions locally.
@@ -140,7 +140,8 @@ Follow this section to get started working on technical coding questions locally
     > # Right-click on the java dir in .\templates and paste it into the .\medium dir
     ```
 
-    The above command and steps will create a directory for a given particular technical question. Once made `cd` into the directory and begin your implementation.
+    > The above command and steps will create a directory for a given particular technical question.
+    Once made `cd` into the directory and begin your implementation.
    
 4. Outline your algorithm in pseudocode in the file: `algorithm.txt`
 5. Using a TDD approach, design tests for your functions in the file: `test.py`
@@ -155,7 +156,7 @@ MIT License: A short and simple permissive license with conditions only requirin
 
 - View and access the MIT License [here][MIT]. 
 - Go through the outlined instructions to include the LICENSE in your project.
-- Remember to modify the text file and include the YEAR and your FULLNAME.
+- Modify the text file and include the YEAR and your FULLNAME.
 
 
 
