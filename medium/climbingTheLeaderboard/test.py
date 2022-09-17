@@ -2,8 +2,8 @@ import unittest
 
 from main import (
     climbing_leaderboard,
-    get_player_rank,
-    update_player_ranks    
+    get_player_ranks,
+    get_player_rank
 )
 
 
@@ -25,12 +25,12 @@ class TestGetPlayerRank(unittest.TestCase):
     def test_should_retrieve_the_player_rank_based_on_single_game_score(self):
 
         # Given
-        score = 40
-        expected = 3
+        score = 50
+        expected = 2
         total_ranks = len(set(LEADERBOARD))
 
         # When
-        updated_leaderboard = update_leaderboard(score, LEADERBOARD)
+        updated_leaderboard = list(dict.fromkeys(LEADERBOARD))[::-1]
         actual = get_player_rank(score, updated_leaderboard)
 
         # Then
@@ -39,23 +39,20 @@ class TestGetPlayerRank(unittest.TestCase):
         self.assertLessEqual(actual, total_ranks)
         self.assertEqual(actual, expected)
 
-class TestUpdatePlayerRank(unittest.TestCase):
+class TestGetPlayerRanks(unittest.TestCase):
 
-    def test_should_update_single_player_rank_by_given_score(self):
+    def test_should_get_player_ranks_based_on_given_player_scores(self):
 
         # Given
-        rank = 2
-        score = 50
-        expected = [2]
+        expected = [1, 2, 4, 6]
 
         # When
-        actual = update_player_ranks(score, LEADERBOARD)
+        leaderboard = list(dict.fromkeys(LEADERBOARD))[::-1]
+        actual = get_player_ranks(leaderboard, PLAYER_SCORES)
         
-        # Then
+        # # Then
         self.assertIsInstance(actual, list)
         self.assertIsInstance(actual[0], int)
-        self.assertIn(rank, actual)
-        self.assertNotIn(score, actual)
         self.assertEqual(actual, expected)
 
 class TestClimbingTheLeaderboard(unittest.TestCase):
