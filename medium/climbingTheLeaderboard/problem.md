@@ -1,8 +1,11 @@
 ## HackerRank
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png" width="15%"></img>
 
-- **Problem**: Picking Numbers
-- **Level**: Easy
-- **Author**: wanbo
+> Navigation: Prepare > Algorithms > Implementation >
+
+- **Problem**: Climbing the Leaderboard
+- **Level**: Medium
+- **Author**: Shafaet
 
 
-> Link: https://www.hackerrank.com/challenges/picking-numbers/problem
+> Link: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
