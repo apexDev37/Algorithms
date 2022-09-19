@@ -1,12 +1,15 @@
 [Pseudocode]
-Question: <HackerRank problem Name>
-Level: <HackerRank problem Level: [easy, medium, hard]>
+Question: Save The Prisoner
+Level: Easy
 Author: <HackerRank problem Author>
-Solution: <your GitHub username>
+Solution: apexDev37
 
-    [Example]
-    Outline steps for your algorithmic approach:
+    1) Compute the modulus for the sweets and the prisoners
+            sweets % prisoners = value
 
-        1) Step one
-        2) Step two
-        3) Step three
+    2) Compute the result of the modulus operation plus the chair position parameter
+            mod result + chair position = value
+
+    3) Return the compute value from step 2 minus one 
+            value - 1 = return value
+        
