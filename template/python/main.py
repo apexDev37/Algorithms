@@ -2,7 +2,7 @@
 || HackerRank
     Problem: 'problem name' 
     Level: 'problem level'
-    Author: 'problem auther'
+    Author: 'problem author'
     Implementation: 'your GitHub username'
 """
 

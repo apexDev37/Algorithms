@@ -1,7 +1,7 @@
 [Pseudocode]
 Question: <HackerRank problem Name>
 Level: <HackerRank problem Level: [easy, medium, hard]>
-Auther: <HackerRank problem Author>
+Author: <HackerRank problem Author>
 Solution: <your GitHub username>
 
     [Example]
