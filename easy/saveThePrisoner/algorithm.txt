@@ -1,0 +1,12 @@
+[Pseudocode]
+Question: <HackerRank problem Name>
+Level: <HackerRank problem Level: [easy, medium, hard]>
+Author: <HackerRank problem Author>
+Solution: <your GitHub username>
+
+    [Example]
+    Outline steps for your algorithmic approach:
+
+        1) Step one
+        2) Step two
+        3) Step three
