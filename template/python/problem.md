@@ -1,8 +1,11 @@
 ## HackerRank
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png" width="15%"></img>
 
-- **Problem**: Picking Numbers
-- **Level**: Easy
-- **Author**: wanbo
+> Navigation: Prepare > Algorithms > Implementation >
+
+- **Problem**: <problem name>
+- **Level**: <problem level>
+- **Author**: <problem author>
 
 
-> Link: https://www.hackerrank.com/challenges/picking-numbers/problem
+> Link: <copy and past link for the specific question>
