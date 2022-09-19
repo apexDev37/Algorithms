@@ -1,22 +1,22 @@
 """
 || HackerRank
-    Problem: 'problem name' 
-    Level: 'problem level'
-    Author: 'problem author'
-    Implementation: 'your GitHub username'
+    Problem: Save The Prisoner
+    Level: Easy
+    Author: 
+    Implementation: apexDev37
 """
 
-# This is main entry point function to complete
-# on the HackerRank platform. 
-# Rename as per specified
 
-def function_name():
+def save_the_prisoner(chair_position: int, prisoners: int, sweets: int) -> int:
     pass
 
 
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+    prisoners = 5
+    sweets = 2
+    chair_position = 2
+    print('Save Prisoner in chair no: ', 
+            save_the_prisoner(chair_position, prisoners, sweets))
 
 
 if __name__ == "__main__":
