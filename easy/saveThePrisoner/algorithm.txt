@@ -4,11 +4,16 @@ Level: Easy
 Author: <HackerRank problem Author>
 Solution: apexDev37
 
-    1) Compute the modulus for the sweets and the prisoners
+    1) If sweets is greater than the number of prisoners
+        Compute the modulus for the sweets and the prisoners
             sweets % prisoners = value
 
-    2) Compute the result of the modulus operation plus the chair position parameter
-            mod result + chair position = value
+
+    2) Compute the result of step one plus the chair position
+        If the addition result is greater than the number of prisoners
+            Then subtract the result with the number of prisoners
+                addition result - prisoners = new value
+
 
     3) Return the compute value from step 2 minus one 
             value - 1 = return value
