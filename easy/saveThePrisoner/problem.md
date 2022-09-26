@@ -3,9 +3,9 @@
 
 > Navigation: Prepare > Algorithms > Implementation >
 
-- **Problem**: <problem name>
-- **Level**: <problem level>
-- **Author**: <problem author>
+- **Problem**: Save the Prisoner
+- **Level**: Easy
+- **Author**: sd5869
 
 
-> Link: <copy and past link for the specific question>
+> Link: https://www.hackerrank.com/challenges/save-the-prisoner/problem
