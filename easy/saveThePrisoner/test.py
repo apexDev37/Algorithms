@@ -35,24 +35,24 @@ class TestSaveThePrisoner(unittest.TestCase):
 
         # When
         actual = get_remainder_sweets(PRISONERS, SWEETS)
-        
+
         # Then
         self.assertIsInstance(actual, int)
         self.assertEqual(actual, expected)
 
-
-    def test_should_return_chair_position_to_receive_the_last_sweet(self) -> None:
+    def test_should_return_chair_position_to_receive_the_last_sweet(
+            self) -> None:
         # Given
         expected = 6
 
-        # When        
+        # When
         actual = save_the_prisoner(CHAIR_POSITION, PRISONERS, SWEETS)
 
         # Then
-        self.assertIsInstance(actual, type(expected))        
-        self.assertGreaterEqual(actual, 1)        
-        self.assertLessEqual(actual, PRISONERS)        
-        self.assertEqual(actual, expected)        
+        self.assertIsInstance(actual, type(expected))
+        self.assertGreaterEqual(actual, 1)
+        self.assertLessEqual(actual, PRISONERS)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
