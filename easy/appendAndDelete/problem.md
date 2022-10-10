@@ -3,9 +3,9 @@
 
 > Navigation: Prepare > Algorithms > Implementation >
 
-- **Problem**: <problem name>
-- **Level**: <problem level>
-- **Author**: <problem author>
+- **Problem**: Append and Delete
+- **Level**: Easy
+- **Author**: zemen
 
 
-> Link: <copy and past link for the specific question>
+> Link: https://www.hackerrank.com/challenges/append-and-delete/problem

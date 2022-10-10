@@ -1,8 +1,8 @@
 [Pseudocode]
-Question: <HackerRank problem Name>
-Level: <HackerRank problem Level: [easy, medium, hard]>
-Author: <HackerRank problem Author>
-Solution: <your GitHub username>
+Question: Append and Delete
+Level: Easy
+Author: zemen
+Solution: apexDev37
 
     [Example]
     Outline steps for your algorithmic approach:

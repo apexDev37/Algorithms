@@ -1,9 +1,9 @@
 """
 || HackerRank
-    Problem: 'problem name'
-    Level: 'problem level'
-    Author: 'problem author'
-    Implementation: 'your GitHub username'
+    Problem: Append and Delete 
+    Level: Easy
+    Author: zemen
+    Implementation: apexDev37
 
     Status: PASSED - '# of test cases passed'
 """
