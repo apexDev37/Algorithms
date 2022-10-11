@@ -6,17 +6,20 @@
     Implementation: apexDev37
 """
 
-# This is main entry point function to complete
-# on the HackerRank platform. 
-# Rename as per specified
 
-def function_name():
+def append_and_delete():
     pass
 
 
+def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
+    delete_moves = len(initial)
+    append_moves = len(desired)
+    total_moves = delete_moves + append_moves
+    return 'Yes' if (total_moves <= moves) else 'No'
+
+
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+    print('Can append and delete: ', append_and_delete())
 
 
 if __name__ == "__main__":
