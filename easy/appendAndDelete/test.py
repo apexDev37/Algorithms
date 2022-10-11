@@ -1,7 +1,8 @@
 import unittest
 
 from main import (
-    append_by_empty_string
+    append_by_empty_string,
+    get_substring_index
 )
 
 
@@ -38,11 +39,33 @@ class TestAppendAndDelete(unittest.TestCase):
         
         # Then
         self.assertIsInstance(actual, type(expected))
-        self.assertEquals(actual, 'Yes' or 'No')
+        self.assertIn(actual, ['Yes', 'No'])
         self.assertEqual(actual, expected)
         
         
+    def test_should_get_the_index_of_first_occurring_char_change(self) -> None:
+        """
+        Test behavior to retrieve the index of the first
+        character which is not equal in the initial and
+        desired strings. 
+            Initial: hackerhappy
+            Desired: hackerrank
+            Index: 6 ('h' != 'r')
+        """
         
+        # Given
+        # --- Reference constant values defined above
+        expected = 6
+
+        # When 
+        actual = get_substring_index(INITIAL_STRING, DESIRED_STRING)
+        
+        # Then 
+        self.assertIsNotNone(actual)
+        self.assertIsInstance(actual, type(expected))
+        self.assertLessEqual(actual, len(INITIAL_STRING))
+        self.assertEqual(actual, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
