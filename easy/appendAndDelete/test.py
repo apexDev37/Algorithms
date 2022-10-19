@@ -1,8 +1,10 @@
 import unittest
 
 from main import (
+    append_and_delete,
     append_by_empty_string,
-    get_substring_index
+    get_substring_index,
+    get_substring_lengths
 )
 
 
@@ -64,6 +66,46 @@ class TestAppendAndDelete(unittest.TestCase):
         self.assertIsNotNone(actual)
         self.assertIsInstance(actual, type(expected))
         self.assertLessEqual(actual, len(INITIAL_STRING))
+        self.assertEqual(actual, expected)
+    
+    
+    def test_should_compute_and_return_substring_lengths_to_append_and_delete(self) -> None:
+        """
+        Test behavior to get the lengths of the substrings
+        in the initial and desired string. Use the return
+        value to determine if there are enough moves to
+        perform the append and delete.
+        """
+        
+        # Given
+        index = 6
+        expected = 9
+        
+        # When
+        actual = get_substring_lengths(index, INITIAL_STRING, DESIRED_STRING)
+        
+        # Then 
+        self.assertIsNotNone(actual)
+        self.assertIsInstance(actual, type(expected))
+        self.assertEqual(actual, expected)
+        
+    
+    def test_should_respond_yes_or_no_based_on_append_and_delete_moves(self) -> None:
+        """
+        Test the append and delete functionality to create 
+        the desired string from the initial string based 
+        on the given moves to append and delete
+        """
+        
+        # Given
+        expected = 'Yes'
+        
+        # When
+        actual = append_and_delete(INITIAL_STRING, DESIRED_STRING, MOVES)
+        
+        # Then
+        self.assertIsNotNone(actual)
+        self.assertIsInstance(actual, type(expected))
         self.assertEqual(actual, expected)
 
 
