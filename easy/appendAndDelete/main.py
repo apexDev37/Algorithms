@@ -7,9 +7,13 @@
 """
 
 
-def append_and_delete():
-    pass
-
+def append_and_delete(initial:str, desired:str, moves:int) -> str:
+    response = append_by_empty_string(initial, desired, moves)
+    index = get_substring_index(initial, desired)
+    substring_lengths = get_substring_lengths(index, initial, desired)
+    response = 'Yes' if (substring_lengths <= moves) else 'No'
+    return response
+    
 
 def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
     delete_moves = len(initial)
@@ -19,6 +23,7 @@ def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
 
 
 def get_substring_index(initial:str, desired:str) -> int:
+    substring_index = 0
     for tuple in list(enumerate(zip(initial, desired))):    # Tuple format: [0, ('h', 'h')]
         chars = tuple[1]
         if chars[0] != chars[1]:
@@ -27,8 +32,15 @@ def get_substring_index(initial:str, desired:str) -> int:
     return substring_index
 
 
+def get_substring_lengths(index:int, initial:str, desired:str) -> int:
+    initial_substring = initial[index:]
+    desired_substring = desired[index:]
+    return len(initial_substring) + len(desired_substring)
+
+
 def main() -> None:
-    print('Can append and delete: ', append_and_delete())
+    print('Can append and delete: ', 
+            append_and_delete(initial='ashley', desired='ash', moves=2))
 
 
 if __name__ == "__main__":
