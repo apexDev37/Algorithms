@@ -8,20 +8,21 @@
 
 
 def append_and_delete(initial:str, desired:str, moves:int) -> str:
-    if len(desired) > len(initial):
-        if (matching_chars(initial, desired) 
-            and len(desired) - len(initial) <= moves):
-            return 'Yes'
-        else: return 'No' 
-
-    response = matching_chars(initial, desired)
     response = append_by_empty_string(initial, desired, moves)
-    index = get_substring_index(initial, desired)
-    substring_lengths = get_substring_lengths(index, initial, desired)
-    response = 'Yes' if (substring_lengths <= moves) else 'No'
+    if matching_chars(initial, desired):
+        response = append_by_matching_chars(initial, desired, moves)
+    response = append_by_substrings(initial, desired, moves)
     return response
 
 
+def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
+    delete_moves = len(initial)
+    append_moves = len(desired)
+    total_moves = delete_moves + append_moves
+    return 'Yes' if (total_moves <= moves) else 'No'
+
+
+# TODO: Refactor function 
 def matching_chars(initial:str, desired:str) -> str:
     return (   
         initial == len(initial) * initial[0]
@@ -29,11 +30,19 @@ def matching_chars(initial:str, desired:str) -> str:
         and initial[0] == desired[0]
     )
 
-def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
-    delete_moves = len(initial)
-    append_moves = len(desired)
-    total_moves = delete_moves + append_moves
-    return 'Yes' if (total_moves <= moves) else 'No'
+
+def append_by_matching_chars(initial:str, desired:str, moves:int) -> str:
+    response = 'No'
+    difference = abs(len(desired) - len(initial))
+    if (difference % 2) == (moves % 2): response = 'Yes'
+    return response
+
+
+def append_by_substrings(initial:str, desired:str, moves:int) -> str:
+    index = get_substring_index(initial, desired)
+    substring_lengths = get_substring_lengths(index, initial, desired)
+    response = 'Yes' if (substring_lengths == moves) else 'No'
+    return response    
 
 
 def get_substring_index(initial:str, desired:str) -> int:
@@ -54,7 +63,7 @@ def get_substring_lengths(index:int, initial:str, desired:str) -> int:
 
 def main() -> None:
     print('Can append and delete: ', 
-            append_and_delete(initial='ashley', desired='ashl', moves=2))
+            append_and_delete(initial='aaa', desired='aaa', moves=1))
 
 
 if __name__ == "__main__":
