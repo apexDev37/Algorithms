@@ -4,7 +4,8 @@ from main import (
     append_and_delete,
     append_by_empty_string,
     get_substring_index,
-    get_substring_lengths
+    get_substring_lengths,
+    matching_chars
 )
 
 
@@ -108,6 +109,25 @@ class TestAppendAndDelete(unittest.TestCase):
         self.assertIsInstance(actual, type(expected))
         self.assertEqual(actual, expected)
 
+    def test_should_check_if_moves_exist_for_strings_with_matching_chars(self) -> None:
+        """
+        Test if the initial and desired strings that have
+        the matching characters without considering
+        string length.
+        """
+        
+        # Given
+        initial_string = 'aaaaa'
+        desired_string = 'aaaaaaa'
+        expected = True
+        
+        # When
+        actual = matching_chars(initial_string, desired_string)
+        
+        # Then
+        self.assertIsNotNone(actual)
+        self.assertIsInstance(actual, type(expected))
+        self.assertEqual(actual, expected)
 
 if __name__ == '__main__':
     unittest.main()
