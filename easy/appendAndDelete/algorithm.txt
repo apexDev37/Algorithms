@@ -4,9 +4,21 @@ Level: Easy
 Author: zemen
 Solution: apexDev37
 
-    [Example]
-    Outline steps for your algorithmic approach:
+        1) Compute the sum of the length of the initial string and the desired string
+            Determine if the sum is less or equal to the given moves
+                Return 'Yes' if less or equal than given moves
+                Return 'No' if greater than given moves
 
-        1) Step one
-        2) Step two
-        3) Step three
+        2) Determine if the initial string and the desired string each have the same single char
+            If true, get the positive difference of chars between the initial and desired string
+            Return 'Yes' if both the difference and given moves are both equally even or odd
+            Return 'No' if either one is odd and the other even            
+
+
+        3) If the all the above computations result in a 'No' response
+            Determine if both the initial and desired equal
+                Return 'Yes' if equal
+            Get the index of first char in the initial string that differs from the desired string
+            Get the lengths of the substrings from the initial and desired string using the index
+            Get the sum of the lengths of the substrings
+                Return 'Yes' if the sum of the lengths is less or equal to the given moves
