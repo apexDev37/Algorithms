@@ -11,7 +11,8 @@ def append_and_delete(initial:str, desired:str, moves:int) -> str:
     response = append_by_empty_string(initial, desired, moves)
     if matching_chars(initial, desired):
         response = append_by_matching_chars(initial, desired, moves)
-    response = append_by_substrings(initial, desired, moves)
+    if response == 'No':
+        response = append_by_substrings(initial, desired, moves)
     return response
 
 
@@ -23,7 +24,7 @@ def append_by_empty_string(initial:str, desired:str, moves:int) -> str:
 
 
 # TODO: Refactor function 
-def matching_chars(initial:str, desired:str) -> str:
+def matching_chars(initial:str, desired:str) -> bool:
     return (   
         initial == len(initial) * initial[0]
         and desired == len(desired) * desired[0]
@@ -34,7 +35,8 @@ def matching_chars(initial:str, desired:str) -> str:
 def append_by_matching_chars(initial:str, desired:str, moves:int) -> str:
     response = 'No'
     difference = abs(len(desired) - len(initial))
-    if (difference % 2) == (moves % 2): response = 'Yes'
+    if ((difference % 2) == (moves % 2)
+        or initial == desired): response = 'Yes'
     return response
 
 
@@ -63,7 +65,7 @@ def get_substring_lengths(index:int, initial:str, desired:str) -> int:
 
 def main() -> None:
     print('Can append and delete: ', 
-            append_and_delete(initial='aaa', desired='aaa', moves=1))
+            append_and_delete(initial='aba', desired='aaa', moves=7))
 
 
 if __name__ == "__main__":
