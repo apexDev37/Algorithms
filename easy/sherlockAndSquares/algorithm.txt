@@ -3,3 +3,16 @@ Question: Sherlock and Squares
 Level: easy
 Author: darkshadows
 Solution: apexDev37
+
+        1) Create a list consisting of values inclusive of the given: lower and upper bound
+            (Example)
+                Lower bound: x
+                Upper bound: y
+                List: [x ... y]
+
+        2) Iterate through each value in the created list
+        3) Decision structure to check if the value is perfect square through logic
+            If a perfect square, increment the counter
+            If not, perform no incrementing
+        4) Return the counter after iteration
+
