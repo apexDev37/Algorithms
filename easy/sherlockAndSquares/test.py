@@ -11,7 +11,7 @@ import unittest
 
 
 """
-Tests for problem: 'Problem name'
+Tests for problem: Sherlock and Squares
 Script: main.py
 """
 

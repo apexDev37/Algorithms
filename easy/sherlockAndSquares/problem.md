@@ -3,9 +3,9 @@
 
 > Navigation: Prepare > Algorithms > Implementation >
 
-- **Problem**: <problem name>
-- **Level**: <problem level>
-- **Author**: <problem author>
+- **Problem**: Sherlock and Squares
+- **Level**: easy
+- **Author**: darkshadows
 
 
-> Link: <copy and past link for the specific question>
+> Link: https://www.hackerrank.com/challenges/sherlock-and-squares/problem
