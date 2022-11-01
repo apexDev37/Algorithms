@@ -15,23 +15,19 @@ def sherlock_and_squares(lower_bound:int, upper_bound:int) -> int:
     return perfect_squares
 
 
-def get_first_perfect_square(lower_bound:int, upper_bound:int) -> int:    
-    perfect_square = 0
-    while perfect_square == 0:
-        if is_perfect_square(lower_bound):
-            perfect_square = lower_bound
-        lower_bound += 1
-    return perfect_square
+def get_first_perfect_square(lower_bound:int, upper_bound:int) -> int: 
+    first_perfect_square = 0
+    for value in range(lower_bound, upper_bound + 1):
+        if is_perfect_square(value):
+            first_perfect_square = value
+            break
+    return first_perfect_square        
 
 
 def is_perfect_square(whole_number:int) -> bool:
     square_root = math.isqrt(whole_number)
     return whole_number == math.pow(square_root, 2)
     
-
-def is_within_range(perfect_square:int, lower_bound:int, upper_bound:int) -> bool:
-    return (lower_bound <= perfect_square <= upper_bound)
-
 
 def get_perfect_squares(perfect_square:int, lower_bound:int, upper_bound:int) -> int:
     number_of_perfect_squares = 0
@@ -40,6 +36,10 @@ def get_perfect_squares(perfect_square:int, lower_bound:int, upper_bound:int) ->
             number_of_perfect_squares += 1
         perfect_square = next_perfect_square(perfect_square)
     return number_of_perfect_squares
+
+
+def is_within_range(perfect_square:int, lower_bound:int, upper_bound:int) -> bool:
+    return (lower_bound <= perfect_square <= upper_bound)
 
 
 def next_perfect_square(current_perfect_square:int) -> int:
