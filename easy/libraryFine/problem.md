@@ -3,9 +3,9 @@
 
 > Navigation: Prepare > Algorithms > Implementation >
 
-- **Problem**: <problem name>
-- **Level**: <problem level>
-- **Author**: <problem author>
+- **Problem**: Library Fine
+- **Level**: easy
+- **Author**: vatsalchanana
 
 
-> Link: <copy and past link for the specific question>
+> Link: https://www.hackerrank.com/challenges/library-fine/problem
