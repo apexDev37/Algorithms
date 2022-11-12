@@ -6,17 +6,20 @@
     Implementation: apexDev37
 """
 
-# This is main entry point function to complete
-# on the HackerRank platform. 
-# Rename as per specified
+from datetime import date
 
-def function_name():
+
+def library_fine():    
     pass
 
 
+def is_returned_by_due_date(return_date: date, due_date: date) -> bool:
+    difference = return_date - due_date
+    return difference.days <= 0
+
+
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+    print('Library fine charged: ', library_fine())
 
 
 if __name__ == "__main__":
