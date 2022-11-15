@@ -20,18 +20,10 @@ def convert_to_date(day: int, month: int, year: int) -> date:
     return converted_date
 
 
-def compute_difference(return_date: date, due_date: date) -> dict:
-    return {
-        'year': return_date.year - due_date.year,
-        'month': return_date.month - due_date.month,
-        'day': return_date.day - due_date.day 
-    }
-
-
 def get_fine(return_date: date, due_date: date) -> int:
     fine = 0
     if not is_returned_by_due_date(return_date, due_date):
-        difference = compute_difference(return_date, due_date)
+        difference = compute_date_difference(return_date, due_date)
         fine = compute_fine_amount(difference)
     return fine
 
@@ -39,6 +31,14 @@ def get_fine(return_date: date, due_date: date) -> int:
 def is_returned_by_due_date(return_date: date, due_date: date) -> bool:
     difference = return_date - due_date
     return difference.days <= 0
+
+
+def compute_date_difference(return_date: date, due_date: date) -> dict:
+    return {
+        'year': return_date.year - due_date.year,
+        'month': return_date.month - due_date.month,
+        'day': return_date.day - due_date.day 
+    }
 
 
 def compute_fine_amount(difference: dict) -> None:
