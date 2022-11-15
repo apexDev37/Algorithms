@@ -13,6 +13,11 @@ def library_fine():
     pass
 
 
+def convert_to_date(day: int, month: int, year: int) -> date:
+    converted_date = date(year, month, day)
+    return converted_date
+
+
 def compute_difference(return_date: date, due_date: date) -> dict:
     return {
         'year': return_date.year - due_date.year,
