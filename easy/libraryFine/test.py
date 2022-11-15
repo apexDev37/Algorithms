@@ -5,7 +5,8 @@ from main import (
   is_returned_by_due_date,
   get_fine,
   compute_difference,
-  compute_fine_amount
+  compute_fine_amount,
+  convert_to_date
 )
 
 
@@ -24,6 +25,7 @@ RETURN_DATE: date = date(2020, 7, 28)
 
 class LibraryFine(unittest.TestCase):
   
+  
   def test_should_check_if_book_is_returned_on_or_before_due_date(self) -> None:
   
     # Given
@@ -37,6 +39,7 @@ class LibraryFine(unittest.TestCase):
     self.assertIsNotNone(actual)
     self.assertIsInstance(actual, type(expected))
     self.assertEqual(actual, expected)
+    
   
   def test_should_charge_zero_fine_for_book_return_on_or_before_due_date(self) -> None:
     
@@ -81,6 +84,21 @@ class LibraryFine(unittest.TestCase):
     # Then
     self.assertIsNotNone(actual)
     self.assertIsInstance(actual, type(expected))
+    self.assertEqual(actual, expected)
+    
+  
+  def test_should_return_date_object_given_integer_values_representing_date(self) -> None:
+    
+    # Given
+    day, month, year = 28, 7, 2020
+    expected = RETURN_DATE
+    
+    # When
+    actual = convert_to_date(day, month, year)
+    
+    # Then
+    self.assertIsNotNone(actual)
+    self.assertIsInstance(actual, date)
     self.assertEqual(actual, expected)
     
   
