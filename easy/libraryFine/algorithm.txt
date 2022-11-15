@@ -1,0 +1,18 @@
+[Pseudocode]
+Question: Library Fine
+Level: easy
+Author: vatsalchanana
+Solution: apexDev37
+
+
+
+        1)  Check if the book was returned on or before the due date. 
+            Charge and return a fine of 0 if true,
+            Else proceed computation.
+
+        2)  Compute the difference for the value: year, month, day
+            between the return date and the due date.
+
+        3)  Compute the fine based on the highest difference of the
+            return date and the due date, i.e, if the difference in
+            years is greater than 1, compute the fine based on years.
