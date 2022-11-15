@@ -9,8 +9,10 @@
 from datetime import date
 
 
-def library_fine():    
-    pass
+def library_fine(d1, m1, y1, d2, m2, y2):    
+    return_date = convert_to_date(d1, m1, y1)
+    due_date = convert_to_date(d2, m2, y2)
+    return get_fine(return_date, due_date)
 
 
 def convert_to_date(day: int, month: int, year: int) -> date:
@@ -28,8 +30,9 @@ def compute_difference(return_date: date, due_date: date) -> dict:
 
 def get_fine(return_date: date, due_date: date) -> int:
     fine = 0
-    if is_returned_by_due_date(return_date, due_date):
-        fine = 0
+    if not is_returned_by_due_date(return_date, due_date):
+        difference = compute_difference(return_date, due_date)
+        fine = compute_fine_amount(difference)
     return fine
 
 
@@ -50,7 +53,10 @@ def compute_fine_amount(difference: dict) -> None:
 
 
 def main() -> None:
-    print('Library fine charged: ', library_fine())
+    day1, month1, year1 = 9, 6, 2015
+    day2, month2, year2 = 6, 6, 2015
+    print('Library fine charged: ', 
+          library_fine(day1, month1, year1, day2, month2, year2))
 
 
 if __name__ == "__main__":
