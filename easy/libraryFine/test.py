@@ -3,7 +3,9 @@ from datetime import date
 
 from main import (
   is_returned_by_due_date,
-  get_fine
+  get_fine,
+  compute_difference,
+  compute_fine_amount
 )
 
 
@@ -51,6 +53,36 @@ class LibraryFine(unittest.TestCase):
     self.assertEqual(actual, expected)
 
 
+  def test_should_compute_difference_between_the_return_and_due_date(self) -> None:
+    
+    # Given
+    # --- reference constants for date values at the top of the script
+    expected: dict = {'day': 27, 'month': 5, 'year': 0} 
+    
+    # When
+    actual: dict = compute_difference(RETURN_DATE, DUE_DATE)
 
+    # Then
+    self.assertIsNotNone(actual)
+    self.assertIsInstance(actual, type(expected))
+    self.assertEqual(actual.keys(), expected.keys())
+    self.assertDictEqual(actual, expected)
+
+
+  def test_should_compute_fine_based_on_highest_difference_between_dates(self) -> None:
+    
+    # Given
+    difference = compute_difference(RETURN_DATE, DUE_DATE)
+    expected = 2500
+
+    # When
+    actual = compute_fine_amount(difference)
+    
+    # Then
+    self.assertIsNotNone(actual)
+    self.assertIsInstance(actual, type(expected))
+    self.assertEqual(actual, expected)
+    
+  
 if __name__ == '__main__':
   unittest.main()
