@@ -4,7 +4,7 @@ from datetime import date
 from main import (
   is_returned_by_due_date,
   get_fine,
-  compute_difference,
+  compute_date_difference,
   compute_fine_amount,
   convert_to_date
 )
@@ -56,14 +56,14 @@ class LibraryFine(unittest.TestCase):
     self.assertEqual(actual, expected)
 
 
-  def test_should_compute_difference_between_the_return_and_due_date(self) -> None:
+  def test_should_compute_date_difference_between_the_return_and_due_date(self) -> None:
     
     # Given
     # --- reference constants for date values at the top of the script
     expected: dict = {'day': 27, 'month': 5, 'year': 0} 
     
     # When
-    actual: dict = compute_difference(RETURN_DATE, DUE_DATE)
+    actual: dict = compute_date_difference(RETURN_DATE, DUE_DATE)
 
     # Then
     self.assertIsNotNone(actual)
@@ -75,7 +75,7 @@ class LibraryFine(unittest.TestCase):
   def test_should_compute_fine_based_on_highest_difference_between_dates(self) -> None:
     
     # Given
-    difference = compute_difference(RETURN_DATE, DUE_DATE)
+    difference = compute_date_difference(RETURN_DATE, DUE_DATE)
     expected = 2500
 
     # When
