@@ -1,6 +1,6 @@
 """
 || HackerRank
-    Problem: Cut The Sticks 
+    Problem: Cut The Sticks
     Level: easy
     Author: shashank21j
     Implementation: apexDev37
@@ -19,7 +19,9 @@ def sort_and_remove_duplicates(sticks: list[int]) -> list[int]:
   return list(sorted_sticks)
 
 
-def get_number_of_sticks_cut(sticks: list[int], unique_sticks: list[int]) -> list[int]:
+def get_number_of_sticks_cut(
+        sticks: list[int],
+        unique_sticks: list[int]) -> list[int]:
   number_of_sticks_cut = [len(sticks)]
   for stick in unique_sticks:
     sticks = filter_min_value(sticks, stick)
