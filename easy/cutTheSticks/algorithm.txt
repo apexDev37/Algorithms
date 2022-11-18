@@ -4,9 +4,13 @@ Level: easy
 Author: shashank21j
 Solution: apexDev37
 
-    [Example]
-    Outline steps for your algorithmic approach:
 
-        1) Step one
-        2) Step two
-        3) Step three
+        1)  Sort the given list of integers,
+            and remove all duplicate values in the list.
+        
+        2)  Get the minimum value in the given list,
+            and filter the list for values equal to the minimum value.
+
+        
+        3)  Append the length of the array after each operation
+            at the end of a given iteration. 
