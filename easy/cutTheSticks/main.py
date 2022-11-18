@@ -13,18 +13,18 @@ def cut_the_sticks(sticks: list[int]) -> list[int]:
   return sticks_cut
 
 
+def sort_and_remove_duplicates(sticks: list[int]) -> list[int]:
+  non_duplicate_sticks = set(sticks)
+  sorted_sticks = sorted(non_duplicate_sticks)
+  return list(sorted_sticks)
+
+
 def get_number_of_sticks_cut(sticks: list[int], unique_sticks: list[int]) -> list[int]:
   number_of_sticks_cut = [len(sticks)]
   for stick in unique_sticks:
     sticks = filter_min_value(sticks, stick)
     number_of_sticks_cut.append(len(sticks))
   return number_of_sticks_cut[:-1]
-   
-
-def sort_and_remove_duplicates(sticks: list[int]) -> list[int]:
-  non_duplicate_sticks = set(sticks)
-  sorted_sticks = sorted(non_duplicate_sticks)
-  return list(sorted_sticks)
 
 
 def filter_min_value(sticks: list[int], minimum_value: int) -> list[int]:
