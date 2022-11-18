@@ -1,9 +1,9 @@
 """
 || HackerRank
-    Problem: 'problem name' 
-    Level: 'problem level'
-    Author: 'problem author'
-    Implementation: 'your GitHub username'
+    Problem: Cut The Sticks 
+    Level: easy
+    Author: shashank21j
+    Implementation: apexDev37
 """
 
 # This is main entry point function to complete

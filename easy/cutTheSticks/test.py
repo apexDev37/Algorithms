@@ -11,7 +11,7 @@ import unittest
 
 
 """
-Tests for problem: 'Problem name'
+Tests for problem: Cut The Sticks
 Script: main.py
 """
 
