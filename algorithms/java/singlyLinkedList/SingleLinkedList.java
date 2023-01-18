@@ -61,21 +61,6 @@ public class SingleLinkedList extends LinkedList {
         currentNode.next = this.newNode;
     }
 
-    private Node getNodeAt(int location) {
-        try {
-            return getNode(location);
-        } catch (NullPointerException exception) {
-            throw new IndexOutOfBoundsException("Given node location: " + location + ", does not exist.");
-        }
-    }
-
-    private Node getNode(int location) {
-        Node currentNode = this.head;
-        for (int n = 0; n < location - 1; n++)
-            currentNode = currentNode.next;
-        return currentNode;
-    }
-
     // Traversal
     public void displayNodes() {
         try {
@@ -118,16 +103,6 @@ public class SingleLinkedList extends LinkedList {
         } catch (Exception e) {
             throw new NoSuchElementException(String.format("Node with value: %d, does not exist in linked list.", nodeValue));
         }
-    }
-
-    private int getNodeLocation(int target) {
-        Node currentNode = this.head;
-        for (int location = 0; location < this.size; location++) {
-            if (currentNode.value == target)
-                return location;
-            currentNode = currentNode.next;
-        }
-        return -1;
     }
 
     private void searchStatus(int location) {
