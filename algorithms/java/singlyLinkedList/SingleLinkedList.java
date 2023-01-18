@@ -1,7 +1,4 @@
-package com.apexdev.algorithms.linkedlist.single;
-
-import com.apexdev.algorithms.linkedlist.LinkedList;
-import com.apexdev.algorithms.linkedlist.Node;
+package com.apexdev.algorithms.singlyLinkedList;
 
 import java.util.NoSuchElementException;
 
@@ -32,17 +29,10 @@ public class SingleLinkedList extends LinkedList {
 
     // Insertion
     public void insertNode(int location, int nodeValue) {
-        // Handle insertion into empty linked list
         if (!emptyLinkedList()) {
-
-            // Create new node for insertion
             createNewNode(nodeValue);
-
-            // Insert new node at given location
             insertNodeAt(location);
-
         } else createLinkedList(nodeValue);
-
         this.size++;
     }
 
@@ -51,8 +41,7 @@ public class SingleLinkedList extends LinkedList {
             insertBeforeHead();
         else if (location >= this.size)
             insertAfterTail();
-        else
-            insertAtLocation(location);
+        else insertAt(location);
     }
 
     private void insertBeforeHead() {
@@ -66,48 +55,72 @@ public class SingleLinkedList extends LinkedList {
         this.tail = this.newNode;
     }
 
-    private void insertAtLocation(int location) {
+    private void insertAt(int location) {
         Node currentNode = getNodeAt(location);
         this.newNode.next = currentNode.next;
         currentNode.next = this.newNode;
     }
 
     private Node getNodeAt(int location) {
+        try {
+            return getNode(location);
+        } catch (NullPointerException exception) {
+            throw new IndexOutOfBoundsException("Given node location: " + location + ", does not exist.");
+        }
+    }
+
+    private Node getNode(int location) {
         Node currentNode = this.head;
         for (int n = 0; n < location - 1; n++)
             currentNode = currentNode.next;
         return currentNode;
     }
 
-    private boolean emptyLinkedList() {
-        return this.head == null;
+    // Traversal
+    public void displayNodes() {
+        try {
+            traverseLinkedList();
+        } catch (NullPointerException e) {
+            throw new IllegalStateException("Cannot traverse given empty linked list");
+        }
     }
 
-    // Traversal
-    public void traverseLinkedList() {
-        // Error handling
-        if (emptyLinkedList())
-            throw new IllegalStateException("Cannot Traverse Empty Linked List");
+    private void traverseLinkedList() {
+        StringBuilder builder = new StringBuilder();
+        traverse(builder);
+        printLinkedList(builder);
+    }
 
-        // Traversal logic
+    private void traverse(StringBuilder builder) {
         Node currentNode = this.head;
-        for (int n = 0; n < this.size - 1; n++) {
-            System.out.printf("[%d] -> ", currentNode.value);
+        for (int location = 0; location < this.size; location++) {
+            appendNode(builder, currentNode, location);
             currentNode = currentNode.next;
         }
-        System.out.printf("[%d]%n", currentNode.value);
+    }
+
+    private void appendNode(StringBuilder builder, Node currentNode, int location) {
+        if (location != this.size - 1) {
+            builder.append(String.format("[%d]", currentNode.value));
+            builder.append(" -> ");
+        } else builder.append(String.format("[%d]", currentNode.value));
+    }
+
+    private void printLinkedList(StringBuilder builder) {
+        System.out.println("Linked List: " + builder.toString());
     }
 
     // Searching
     public void searchNode(int nodeValue) {
-        handleEmptyLinkedList();
-        int nodeLocation = search(nodeValue);
-        System.out.println("Found Node at location: " + nodeLocation);
-        throw new NoSuchElementException(
-                String.format("Node with value: %d, does not exist in linked list.", nodeValue));
+        try {
+            int location = getNodeLocation(nodeValue);
+            searchStatus(location);
+        } catch (Exception e) {
+            throw new NoSuchElementException(String.format("Node with value: %d, does not exist in linked list.", nodeValue));
+        }
     }
 
-    private int search(int target) {
+    private int getNodeLocation(int target) {
         Node currentNode = this.head;
         for (int location = 0; location < this.size; location++) {
             if (currentNode.value == target)
@@ -117,9 +130,10 @@ public class SingleLinkedList extends LinkedList {
         return -1;
     }
 
-    private void handleEmptyLinkedList() {
-        if (this.head == null)
-            throw new IllegalStateException("Cannot perform operation on empty Linked List");
+    private void searchStatus(int location) {
+        if (location == -1)
+            throw new IllegalArgumentException();
+        System.out.println("Node found at location: " + location);
     }
 
     // Deletion
@@ -139,21 +153,20 @@ public class SingleLinkedList extends LinkedList {
             Node currentNode = getNodeAt(location);
             if (location == (this.size - 1)) deleteLastNode(currentNode);
             else deleteGivenNode(currentNode);
-        } else
-            deleteFirstNode();
+        } else deleteFirstNode();
     }
 
     private void deleteFirstNode() {
         this.head = this.head.next;
     }
 
-    private void deleteLastNode(Node currentNode) {
-        currentNode.next = null;
-        this.tail = currentNode;
+    private void deleteLastNode(Node node) {
+        node.next = null;
+        this.tail = node;
     }
 
-    private void deleteGivenNode(Node currentNode) {
-        Node nextNode = currentNode.next;
-        currentNode.next = nextNode.next;
+    private void deleteGivenNode(Node node) {
+        Node nextNode = node.next;
+        node.next = nextNode.next;
     }
 }
