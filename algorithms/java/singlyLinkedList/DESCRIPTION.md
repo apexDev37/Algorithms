@@ -6,7 +6,7 @@
 
 ### Description
 ---
-Linked list data structure is a form of a sequential collection, and it does not have to be in order.  
+Linked list, data structure, is a form of a sequential collection, and it does not have to be in order.  
 A linked list consists of independent nodes that may contain any type of data (in this case `integer`).  
 Each node has a reference to the next node in the link.  
 
@@ -33,7 +33,8 @@ Package: `com.apexdev.algorithms.singlyLinkedList.base`
     public class LinkedList
 ```
 
-Base `class` inherited by various types of linked lists.  
+Base `class` inherited by various types of linked lists. 
+Consists of elements of type `Node.class` defined in the base package.
 Contains utility methods to perform common and ubiquitous operations associated with linked lists.
 
 ### Fields
@@ -86,7 +87,7 @@ Contains utility methods to perform common and ubiquitous operations associated 
 ### Singly Linked List
 ---
 Type: `java.lang.Object`  
-Package: `com.apexdev.algorithms.singlyLinkedList.base`  
+Package: `com.apexdev.algorithms.singlyLinkedList`  
 Inherits: `LinkedList`
 
 ```java
@@ -102,6 +103,7 @@ Full implementation and operations associated with singly linked lists.
 | `private Node`   | newNode | Newly created `Node` in linked list |
 
 ### Methods
+> **Note:** Find and observe implementation of singly linked list behavior in the `Main.java` class.
 
 ---
 ### Creation
@@ -112,7 +114,7 @@ Full implementation and operations associated with singly linked lists.
     public void createLinkedList(int nodeValue)
 ```
 
-> _Creates a `linkedList` against the calling instance `object` consisting of one `Node`._
+> _Creates a `linkedList` against the calling `instance` consisting of one `Node`._
 
 Creates a new linked list for the caller `object` of this method. 
 Creates a new node with an assigned value of the given `nodeValue`.
@@ -171,7 +173,7 @@ linked list, then the `location` of the target `Node` will be output to the
 console, else a `new NoSuchElementException` will be thrown.
 
 ##### Parameters
-@`nodeValue`    ---  An `integer` representing the value for a target `Node` being search for  
+@`nodeValue`    ---  An `integer` representing the value for a target `Node`
 
 ##### Exceptions
 @`NoSuchElementException`    ---  throws when target `Node` could not be found
@@ -194,7 +196,7 @@ deleted. If the given `nodeLocation` is less than or equal to zero, then
 the first `Node` in the linked list will be deleted.
 
 ##### Parameters
-@`nodeLocation`    ---  An `integer` representing the `location` for a `Node` to delete  
+@`nodeLocation`    ---  An `integer` representing the `location` for a `Node`
 <br />
 
 ### See Also
