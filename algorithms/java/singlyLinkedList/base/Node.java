@@ -1,4 +1,4 @@
-package com.apexdev.algorithms.linkedlist;
+package com.apexdev.algorithms.singlyLinkedList.base;
 
 public class Node {
     public int value;

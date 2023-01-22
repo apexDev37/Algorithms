@@ -1,4 +1,4 @@
-package com.apexdev.algorithms.singlyLinkedList;
+package com.apexdev.algorithms.singlyLinkedList.base;
 
 public class LinkedList {
     protected Node head;
