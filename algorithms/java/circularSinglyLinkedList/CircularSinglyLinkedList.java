@@ -3,6 +3,8 @@ package com.apexdev.algorithms.java.circularSinglyLinkedList;
 import com.apexdev.algorithms.java.circularSinglyLinkedList.base.LinkedList;
 import com.apexdev.algorithms.java.circularSinglyLinkedList.base.Node;
 
+import java.util.NoSuchElementException;
+
 public class CircularSinglyLinkedList extends LinkedList {
   private Node newNode;
 
@@ -11,6 +13,7 @@ public class CircularSinglyLinkedList extends LinkedList {
     createNewNode(nodeValue);
     assignHeadNewNode();
     assignTailNewNode();
+    createCircularLink();
     this.size = 1;
   }
 
@@ -33,6 +36,7 @@ public class CircularSinglyLinkedList extends LinkedList {
     if (!emptyLinkedList()) {
       createNewNode(nodeValue);
       insertNodeAt(location);
+      createCircularLink();
     } else createLinkedList(nodeValue);
     this.size++;
   }
@@ -115,12 +119,16 @@ public class CircularSinglyLinkedList extends LinkedList {
   // Deletion
   public void deleteNode(int nodeLocation) {
     if (this.size < 2) deleteLinkedList();
-    else deleteNodeAt(nodeLocation);
+    else {
+      deleteNodeAt(nodeLocation);
+      createCircularLink();
+    }
     this.size--;
   }
 
   private void deleteLinkedList() {
     this.head = null;
+    this.tail.next = null;
     this.tail = null;
   }
 
@@ -137,12 +145,16 @@ public class CircularSinglyLinkedList extends LinkedList {
   }
 
   private void deleteLastNode(Node node) {
-    node.next = null;
+    node.next = this.head;
     this.tail = node;
   }
 
   private void deleteGivenNode(Node node) {
     Node nextNode = node.next;
     node.next = nextNode.next;
+  }
+
+  private void createCircularLink() {
+    this.tail.next = this.head;
   }
 }
