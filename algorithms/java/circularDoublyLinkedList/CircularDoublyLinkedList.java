@@ -129,6 +129,43 @@ public class CircularDoublyLinkedList extends LinkedList {
     System.out.println("Node found at location: " + location);
   }
 
+  // Deletion
+  public void deleteNode(int nodeLocation) {
+    if (this.size < 2) deleteLinkedList();
+    else deleteNodeAt(nodeLocation);
+    this.size--;
+  }
+
+  public void deleteLinkedList() {
+    nullifyAllNodesPreviousReference();
+    this.head = null;
+    this.tail = null;
+  }
+
+  private void deleteNodeAt(int location) {
+    if (location >= (this.size - 1))
+      deleteLastNode();
+    else if (location >= 1) {
+      Node currentNode = getNodeAt(location);
+      deleteGivenNode(currentNode);
+    } else deleteFirstNode();
+  }
+
+  private void deleteFirstNode() {
+    linkDoubly(tail, head.next);
+    this.head = this.head.next;
+  }
+
+  private void deleteLastNode() {
+    linkDoubly(tail.prev, head);
+    this.tail = tail.prev;
+  }
+
+  private void deleteGivenNode(Node node) {
+    Node nextNode = node.next.next;
+    linkDoubly(node, nextNode);
+  }
+
   private void nullifyReferences(Node currentNode) {
     currentNode.next = null;
     currentNode.prev = null;
