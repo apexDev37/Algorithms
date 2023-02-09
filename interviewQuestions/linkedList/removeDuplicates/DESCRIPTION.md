@@ -32,7 +32,7 @@ Nodes whose value already exists in prior Nodes.
 <br />
 
 ## Functions
-> _Find and observe implementation and behavior in the runtime environment class: [RemoveDuplicatesExample](./interviewQuestions/linkedList/removeDuplicates/RemoveDuplicatesExample.java)_
+> _Find and observe implementation and behavior in the runtime environment class: [RemoveDuplicatesExample](./RemoveDuplicatesExample.java)_
 
 - ##### execute
 
