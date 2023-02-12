@@ -6,9 +6,9 @@ import com.apexdev.algorithms.java.singlyLinkedList.base.Node;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NthToLast {
+public final class NthToLast {
   private static final Map<Integer, Node> locationNodeMap = new HashMap<>();
-  private static Node nthNode;
+  private static final Node nthNode;
 
   public static void execute(int nth, SingleLinkedList linkedList) {
     mapLocationToNode(linkedList);

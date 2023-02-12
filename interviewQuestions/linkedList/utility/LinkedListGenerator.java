@@ -4,8 +4,8 @@ import com.apexdev.algorithms.java.singlyLinkedList.SingleLinkedList;
 
 import java.util.Random;
 
-public class LinkedListGenerator {
-  private static SingleLinkedList linkedList;
+public final class LinkedListGenerator {
+  private static final SingleLinkedList linkedList;
 
   public static SingleLinkedList generate(int size) {
     create();
