@@ -3,55 +3,69 @@ package com.apexdev.interviewQuestions.linkedList.sumLists;
 import com.apexdev.algorithms.java.singlyLinkedList.SingleLinkedList;
 import com.apexdev.algorithms.java.singlyLinkedList.base.Node;
 
-import java.util.List;
-
 public final class SumLists {
 
-  public static void
-    execute(SingleLinkedList firstListValue, SingleLinkedList secondListValue) {
-      firstListValue.displayNodes();
-      secondListValue.displayNodes();
+  public static void execute(SingleLinkedList firstList,
+                             SingleLinkedList secondList) {
 
-      int firstValueSum = 0;
-      int secondValueSum = 0;
-      SingleLinkedList sumList = new SingleLinkedList();
+    // Display nodes of both lists
+    firstList.displayNodes();
+    secondList.displayNodes();
 
-      Node currentNode = firstListValue.head;
-      int digitPosition = 1;
-      for (int location = 0; location < firstListValue.size; location++) {
-        int digit = currentNode.value;
-        firstValueSum += digit * digitPosition;
-        digitPosition *= 10;
+    // Compute value sum of both lists
+    int sumOfLists = computeSumOfLists(firstList, secondList);
+    System.out.println("Sum of Lists: " + sumOfLists);
 
-        currentNode = currentNode.next;
+    // Insert each digit from the computed sum of lists in new linked list in reverse order
+    SingleLinkedList sumList = convertValueToList(sumOfLists);
 
-      }
+    sumList.displayNodes();
+  }
 
-      currentNode = secondListValue.head;
-      digitPosition = 1;
-      for (int location = 0; location < secondListValue.size; location++) {
-        int digit = currentNode.value;
-        secondValueSum += digit * digitPosition;
-        digitPosition *= 10;
+  private static int computeSumOfLists(SingleLinkedList firstList, SingleLinkedList secondList) {
+    System.out.println("First value: " + convertListToValue(firstList));
+    System.out.println("Second value: " + convertListToValue(secondList));
+    return convertListToValue(firstList)
+            + convertListToValue(secondList);
+  }
 
-        currentNode = currentNode.next;
-      }
+  private static int convertListToValue(SingleLinkedList listValue) {
+    StringBuilder value = buildValue(listValue);
+    int reversedValue = Integer.parseInt(value.reverse().toString());
+    System.out.println("Value Sum String Representation: " + reversedValue);
+    return reversedValue;
+  }
 
-      System.out.println("First Value Sum: " + firstValueSum);
-      System.out.println("Second Value Sum: " + secondValueSum);
+  private static StringBuilder buildValue(SingleLinkedList listValue) {
+    StringBuilder valueBuilder = new StringBuilder(listValue.size);
+    appendEachNodeValueAsDigit(listValue, valueBuilder);
+    return valueBuilder;
+  }
 
-      int sumOfLists = firstValueSum + secondValueSum;
+  private static void appendEachNodeValueAsDigit(SingleLinkedList listValue, StringBuilder value) {
+    Node currentNode = listValue.head;
+    for (int location = 0; location < listValue.size; location++) {
+      value.append(currentNode.value);
+      currentNode = currentNode.next;
+    }
+  }
 
-      System.out.println("Sum of Lists: " + sumOfLists);
+  private static SingleLinkedList convertValueToList(int value) {
+    // Create new list to contain digits of the sum of lists in reverse order
+    SingleLinkedList sumList = new SingleLinkedList();
+    insertDigitsToList(value, sumList);
+    return sumList;
+  }
 
-      char[] digits = String.valueOf(sumOfLists).toCharArray();
-      for (char digit : digits) {
-        int nodeValue = Integer.parseInt(String.valueOf(digit));
-        System.out.println("Node value to be inserted: " + nodeValue);
-        sumList.insertNode(0, nodeValue);
-      }
+  private static void insertDigitsToList(int value, SingleLinkedList sumList) {
+    for (char digit : getDigits(value)) {
+      int nodeValue = Character.getNumericValue(digit);
+      sumList.insertNode(0, nodeValue);
+    }
+  }
 
-    System.out.println("Size: " + sumList.size);
-      sumList.displayNodes();
+  private static char[] getDigits(int value) {
+    return String.valueOf(value).toCharArray();
   }
 }
+
