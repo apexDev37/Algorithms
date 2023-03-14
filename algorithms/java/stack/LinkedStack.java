@@ -16,30 +16,62 @@ public class LinkedStack<E> implements Stack<E> {
   @Override
   public void push(E value) {
     if (isEmpty())
-      this.head = this.topOfStack = new Node<>(value);
-    else {
-      Node<E> element = new Node<>(value);
-      element.link(this.head);
-      head = topOfStack = element;
-    }
+      updateTop(new Node<>(value));
+    else pushToTop(new Node<>(value));
     size++;
+  }
+
+  private void pushToTop(Node<E> element) {
+    element.link(head);
+    updateTop(element);
+  }
+
+  private void updateTop(Node<E> element) {
+    head = topOfStack = element;
   }
 
   @Override
   public E pop() {
-    // If stack is empty do not perform pop operation and throw new exception
-    // Else if stack is not empty,
-    // Store top element within the method scope
-    // Delete the tOS
-    // Return the stored value for the tOS
-
-    Node<E> topElement;
     if (isEmpty())
-      throw new IllegalStateException("Empty stack: cannot return the last element.");
-    else {
-      topElement = this.topOfStack;
-      this.head = this.topOfStack = head.next;
-      size--;
-    }
-    return topElement.value;
+      throw new EmptyStackException("Cannot perform pop operation on empty stack");
+    return popTopElement();
   }
+
+  private E popTopElement() {
+    Node<E> top = topOfStack;
+    deleteTopElement();
+    return top.value;
+  }
+
+  private void deleteTopElement() {
+    updateTop(head.next);
+    size--;
+  }
+
+  @Override
+  public E peek() {
+    if (isEmpty())
+      throw new EmptyStackException("Cannot perform peek operation on empty stack");
+    return topOfStack.value;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return this.size == 0;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("Stack { ");
+
+    Node<E> element = this.head;
+    for (int location = 0; location < this.size - 1; location++) {
+      builder.append(String.format("[%s], ", element.value));
+      element = element.next;
+    }
+
+    builder.append(String.format("[%s] }", element.value));
+    return builder.toString();
+  }
+}
