@@ -1,51 +1,78 @@
 package com.apexdev.algorithms.java.stack;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.Objects;
 
 public class ArrayStack<E> implements Stack<E> {
+  private final int capacity;
   private E[] elements;
-  private int capacity;
   private int topOfStack = -1;    // Initialize default value
-
-  private ArrayStack() {}
 
   public ArrayStack(Class<E> cls, int capacity) {
     this.capacity = capacity;
-    @SuppressWarnings("unchecked")
-    final E[] elements = (E[]) Array.newInstance(cls, capacity);
-    this.elements = elements;
+    initializeGenericArray(cls, capacity);
+  }
+
+  @SuppressWarnings("unchecked")
+  private void initializeGenericArray(Class<E> cls, int capacity) {
+    this.elements = (E[]) Array.newInstance(cls, capacity);
   }
 
   @Override
   public void push(E element) {
-    if (topOfStack == elements.length - 1)
-      throw new IllegalStateException("Stack capacity reached. Cannot add elements to stack.");
+    if (topOfStack == capacity - 1)
+      throw new IllegalStateException("Stack capacity reached. Cannot add element to stack.");
+    pushToTop(element);
+  }
 
+  private void pushToTop(E element) {
     topOfStack++;
-    System.out.printf("Top of stack: %d%n", topOfStack);
     elements[topOfStack] = element;
-    System.out.println("Stack: " + Arrays.toString(elements));
   }
 
   @Override
   public E pop() {
     if (isEmpty())
-      throw new IllegalStateException("Empty stack: cannot return the last element.");
-    E topElement = elements[topOfStack];
+      throw new EmptyStackException("Cannot perform pop operation on empty stack");
+    return popTopElement();
+  }
+
+  private E popTopElement() {
+    E top = elements[topOfStack];
+    deleteTopElement();
+    return top;
+  }
+
+  private void deleteTopElement() {
     elements[topOfStack] = null;
     topOfStack--;
-    return topElement;
   }
 
   @Override
   public E peek() {
-    System.out.println("Peek at top element: " + elements[topOfStack]);
+    if (isEmpty())
+      throw new EmptyStackException("Cannot perform peek operation on empty stack");
     return elements[topOfStack];
   }
 
   @Override
   public boolean isEmpty() {
     return topOfStack == -1;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder builder = new StringBuilder();
+    builder.append("Stack { ");
+
+    for (int index = capacity -1; index >= 0; index--) {
+      if (Objects.nonNull(elements[index])) {
+        builder.append(String.format("[%s], ", elements[index]));
+      }
+    }
+
+    builder.setLength(builder.length() - 2);
+    builder.append(" }");
+    return builder.toString();
   }
 }
