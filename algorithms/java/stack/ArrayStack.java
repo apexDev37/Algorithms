@@ -3,7 +3,7 @@ package com.apexdev.algorithms.java.stack;
 import java.lang.reflect.Array;
 import java.util.Objects;
 
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayStack<E> implements Stack<E>, CustomArrayStack {
   private final int capacity;
   private E[] elements;
   private int topOfStack = -1;    // Initialize default value
@@ -58,6 +58,11 @@ public class ArrayStack<E> implements Stack<E> {
   @Override
   public boolean isEmpty() {
     return topOfStack == -1;
+  }
+
+  @Override
+  public boolean isFull() {
+    return ++topOfStack == capacity;
   }
 
   @Override
