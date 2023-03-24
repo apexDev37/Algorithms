@@ -1,8 +1,11 @@
 package com.apexdev.algorithms.java.queue;
 
+import java.text.MessageFormat;
+import java.util.Arrays;
+
 public class ArrayQueue<E> implements Queue<E> {
   private final int capacity;
-  private E[] elements;
+  private final E[] elements;
   private int front;
   private int back;
 
@@ -17,25 +20,34 @@ public class ArrayQueue<E> implements Queue<E> {
   public void enqueue(E element) {
     if (isFull())
       throw new IllegalStateException(String.format("Queue at max capacity. Failed to add element: %s", element));
+    enqueueToBack(element);
+  }
+
+  private void enqueueToBack(E element) {
     front = front == -1 ? 0 : front;
-    back++;
-    elements[back] = element;
+    elements[++back] = element;
   }
 
   @Override
   public E dequeue() {
+    handleEmptyQueue("dequeue");
+    return dequeueFrontElement();
+  }
+
+  private void handleEmptyQueue(String method) {
     if (isEmpty())
-      throw new EmptyQueueException("Cannot perform dequeue operation on empty queue.");
+      throw new EmptyQueueException(String.format("Cannot perform %s operation on empty queue.", method));
+  }
+
+  private E dequeueFrontElement() {
     E element = elements[front];
-    elements[front] = null;
-    front++;
+    elements[front++] = null;
     return element;
   }
 
   @Override
   public E peek() {
-    if (isEmpty())
-      throw new EmptyQueueException("Cannot perform peek operation on empty queue.");;
+    handleEmptyQueue("peek");
     return elements[front];
   }
 
@@ -47,5 +59,11 @@ public class ArrayQueue<E> implements Queue<E> {
   @Override
   public boolean isFull() {               // Disclaimer: returns true if queue reaches it's capacity and retains value
     return back == (capacity - 1);
+  }
+
+  @Override
+  public String toString() {
+    return MessageFormat.format(
+            "Queue '{'\n\telements={0}\n'}'", Arrays.toString(elements));
   }
 }
