@@ -3,20 +3,16 @@ package com.apexdev.algorithms.java.queue;
 public class QueueRunner {
 
   public static void main(String[] args) {
-    Queue<String> vowels = new ArrayQueue<>(5);
 
-    vowels.enqueue("a");
-    vowels.enqueue("e");
-    vowels.enqueue("i");
-    vowels.enqueue("o");
-    vowels.enqueue("u");
+    // Instantiate queue with a fixed capacity
+    Queue<String> primitives = QueueFactory.capacityOf(5);
 
+    primitives.enqueue("char");
+    primitives.enqueue("int");
+    primitives.enqueue("boolean");
+    primitives.enqueue("float");
+    primitives.enqueue("double");
 
-    vowels.dequeue();
-    vowels.dequeue();
-    vowels.dequeue();
-    vowels.dequeue();
-
-    vowels.dequeue();
+    System.out.println(primitives);
   }
 }
