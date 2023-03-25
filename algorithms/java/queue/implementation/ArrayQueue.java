@@ -1,9 +1,12 @@
-package com.apexdev.algorithms.java.queue;
+package com.apexdev.algorithms.java.queue.implementation;
+
+import com.apexdev.algorithms.java.queue.base.Queue;
+import com.apexdev.algorithms.java.queue.exception.EmptyQueueException;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-public class ArrayQueue<E> implements Queue<E> {
+class ArrayQueue<E> implements Queue<E> {
   private final int capacity;
   private final E[] elements;
   private int front = -1;

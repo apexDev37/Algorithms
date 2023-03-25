@@ -1,4 +1,6 @@
-package com.apexdev.algorithms.java.queue;
+package com.apexdev.algorithms.java.queue.implementation;
+
+import com.apexdev.algorithms.java.queue.base.Queue;
 
 public final class QueueFactory {
 

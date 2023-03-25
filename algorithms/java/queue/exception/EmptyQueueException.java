@@ -1,4 +1,4 @@
-package com.apexdev.algorithms.java.queue;
+package com.apexdev.algorithms.java.queue.exception;
 
 public class EmptyQueueException extends RuntimeException {
   /**
