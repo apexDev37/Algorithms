@@ -6,13 +6,12 @@ import java.util.Arrays;
 public class ArrayQueue<E> implements Queue<E> {
   private final int capacity;
   private final E[] elements;
-  private int front;
-  private int back;
+  private int front = -1;
+  private int back = -1;
 
   @SuppressWarnings("uncheck")
   public ArrayQueue(int capacity) {
     this.capacity = capacity;
-    this.front = this.back = -1;
     this.elements = (E[]) new Object[capacity];
   }
 
