@@ -22,17 +22,27 @@ public class CircularQueue<E> implements Queue<E> {
   public void enqueue(E element) {
     if (isFull())
       throw new IllegalStateException(String.format("Queue at max capacity. Failed to add element: %s", element));
-    front = front == -1 ? 0 : front;
-    if ((back + 1) == capacity)
-      back = 0;
-    else back++;
+    manageCircularRotation();
     elements[back] = element;
+  }
+
+  private void manageCircularRotation() {
+    this.front = front == -1 ? 0 : front;
+    this.back = (back + 1) == capacity ? 0 : back + 1;
   }
 
   @Override
   public E dequeue() {
+    handleEmptyQueue("dequeue");
+    return dequeFrontElement();
+  }
+
+  private void handleEmptyQueue(String method) {
     if (isEmpty())
-      throw new EmptyQueueException("Cannot perform dequeue operation on empty queue.");
+      throw new EmptyQueueException(String.format("Cannot perform %s operation on empty queue.", method));
+  }
+
+  private E dequeFrontElement() {
     E element = elements[front];
     elements[front++] = null;
     return element;
@@ -40,8 +50,7 @@ public class CircularQueue<E> implements Queue<E> {
 
   @Override
   public E peek() {
-    if (isEmpty())
-      throw new EmptyQueueException("Cannot perform peek operation on empty queue.");
+    handleEmptyQueue("peek");
     return elements[front];
   }
 
@@ -60,6 +69,8 @@ public class CircularQueue<E> implements Queue<E> {
   @Override
   public String toString() {
     return MessageFormat.format(
-            "Queue '{'\n\telements={0}\n'}'", Arrays.toString(elements));
+            "Queue '{'\n\telements={0}\n\tfront={1}\n'}'",
+            Arrays.toString(elements),
+            this.front);
   }
 }
