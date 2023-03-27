@@ -8,4 +8,9 @@ public final class QueueFactory {
   public static <E> Queue<E> capacityOf(int capacity) {
     return new ArrayQueue<>(capacity);
   }
+
+  // Instantiate new linear circular queue with a fixed capacity
+  public static <E> Queue<E> newReusable(int capacity) {
+    return new CircularQueue<>(capacity);
+  }
 }
