@@ -42,7 +42,7 @@ public class CircularQueue<E> extends LinearStaticQueue<E> {
 
   @Override
   public boolean isEmpty() {
-    return back == -1 || front == capacity;
+    return back == -1 && front == -1;
   }
 
   @Override
