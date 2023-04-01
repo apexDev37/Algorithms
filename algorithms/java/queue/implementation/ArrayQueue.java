@@ -5,7 +5,7 @@ import com.apexdev.algorithms.java.queue.base.LinearStaticQueue;
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-public class ArrayQueue<E> extends LinearStaticQueue<E> {
+class ArrayQueue<E> extends LinearStaticQueue<E> {
 
   public ArrayQueue(int capacity) {
     super(capacity);

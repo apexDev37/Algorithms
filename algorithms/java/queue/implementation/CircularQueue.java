@@ -5,7 +5,7 @@ import com.apexdev.algorithms.java.queue.base.LinearStaticQueue;
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-public class CircularQueue<E> extends LinearStaticQueue<E> {
+class CircularQueue<E> extends LinearStaticQueue<E> {
 
   public CircularQueue(int capacity) {
     super(capacity);
