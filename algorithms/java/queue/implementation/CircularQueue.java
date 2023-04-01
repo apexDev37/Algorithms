@@ -1,33 +1,25 @@
 package com.apexdev.algorithms.java.queue.implementation;
 
-import com.apexdev.algorithms.java.queue.base.Queue;
-import com.apexdev.algorithms.java.queue.exception.EmptyQueueException;
+import com.apexdev.algorithms.java.queue.base.LinearStaticQueue;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-public class CircularQueue<E> implements Queue<E> {
-  private final int capacity;
-  private final E[] elements;
-  private int front = -1;
-  private int back = -1;
+public class CircularQueue<E> extends LinearStaticQueue<E> {
 
-  @SuppressWarnings("uncheck")
   public CircularQueue(int capacity) {
-    this.capacity = capacity;
-    this.elements = (E[]) new Object[capacity];
+    super(capacity);
   }
 
   @Override
   public void enqueue(E element) {
-    if (isFull())
-      throw new IllegalStateException(String.format("Queue at max capacity. Failed to add element: %s", element));
-    manageCircularRotation();
+    handleFullQueue(element);
+    handleFirstEnqueue();
+    nextBack();
     elements[back] = element;
   }
 
-  private void manageCircularRotation() {
-    this.front = front == -1 ? 0 : front;
+  private void nextBack() {
     this.back = (back + 1) == capacity ? 0 : back + 1;
   }
 
@@ -37,21 +29,15 @@ public class CircularQueue<E> implements Queue<E> {
     return dequeFrontElement();
   }
 
-  private void handleEmptyQueue(String method) {
-    if (isEmpty())
-      throw new EmptyQueueException(String.format("Cannot perform %s operation on empty queue.", method));
-  }
-
   private E dequeFrontElement() {
     E element = elements[front];
-    elements[front++] = null;
+    elements[front] = null;
+    nextFront();
     return element;
   }
 
-  @Override
-  public E peek() {
-    handleEmptyQueue("peek");
-    return elements[front];
+  private void nextFront() {
+    this.front = (front + 1) == capacity ? 0 : front + 1;
   }
 
   @Override
