@@ -23,27 +23,38 @@ public class LinkedQueue<E> implements Queue<E> {
 
   @Override
   public void enqueue(E element) {
-    if (isEmpty())
-      front = back = new Node<>(element);
+    handleFirstEnqueue(element);
     back.link(new Node<>(element));
     size++;
   }
 
+  private void handleFirstEnqueue(E element)
+  { if (isEmpty())  front = back = new Node<>(element); }
+
   @Override
   public E dequeue() {
-    if (isEmpty())
-      throw new EmptyQueueException("Cannot perform dequeue operation on empty queue");
-    E element = front.value;
-    front = front.next;
+    handleEmptyQueue("dequeue");
     if (size == 1) back = null;
-    size--;
+    return dequeueFrontElement();
+  }
+
+  private void handleEmptyQueue(String method) {
+    if (isEmpty())
+      throw new EmptyQueueException(String.format("Cannot perform %s operation on empty queue", method));
+  }
+
+  private E dequeueFrontElement() {
+    E element = front.value;
+    deleteFront();
     return element;
   }
 
+  private void deleteFront()
+  { front = front.next;   size--; }
+
   @Override
   public E peek() {
-    if (isEmpty())
-      throw new EmptyQueueException("Cannot perform peek operation on empty queue");
+    handleEmptyQueue("peek");
     return front.value;
   }
 
