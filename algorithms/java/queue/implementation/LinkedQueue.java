@@ -1,25 +1,8 @@
 package com.apexdev.algorithms.java.queue.implementation;
 
-import com.apexdev.algorithms.java.queue.base.Queue;
-import com.apexdev.algorithms.java.queue.exception.EmptyQueueException;
+import com.apexdev.algorithms.java.queue.base.LinearDynamicQueue;
 
-public class LinkedQueue<E> implements Queue<E> {
-  private Node<E> front;
-  private Node<E> back;
-  private int size = 0;
-
-  private static class Node<E> {
-    E value;
-    Node<E> next = null;
-
-    Node(E value) {
-      this.value = value;
-    }
-
-    void link(Node<E> next) {
-      this.next = next;
-    }
-  }
+public class LinkedQueue<E> extends LinearDynamicQueue<E> {
 
   @Override
   public void enqueue(E element) {
@@ -28,19 +11,11 @@ public class LinkedQueue<E> implements Queue<E> {
     size++;
   }
 
-  private void handleFirstEnqueue(E element)
-  { if (isEmpty())  front = back = new Node<>(element); }
-
   @Override
   public E dequeue() {
     handleEmptyQueue("dequeue");
     if (size == 1) back = null;
     return dequeueFrontElement();
-  }
-
-  private void handleEmptyQueue(String method) {
-    if (isEmpty())
-      throw new EmptyQueueException(String.format("Cannot perform %s operation on empty queue", method));
   }
 
   private E dequeueFrontElement() {
@@ -50,13 +25,7 @@ public class LinkedQueue<E> implements Queue<E> {
   }
 
   private void deleteFront()
-  { front = front.next;   size--; }
-
-  @Override
-  public E peek() {
-    handleEmptyQueue("peek");
-    return front.value;
-  }
+    { this.front = front.next;   size--; }
 
   @Override
   public boolean isEmpty() {
