@@ -8,9 +8,15 @@ public class LinkedQueue<E> extends LinearDynamicQueue<E> {
 
   @Override
   public void enqueue(E element) {
-    handleFirstEnqueue(element);
-    back.link(new Node<>(element));
+    if (isEmpty())
+      handleFirstEnqueue(element);
+    else enqueueToBack(element);
     size++;
+  }
+
+  private void enqueueToBack(E element) {
+    back.link(new Node<>(element));
+    this.back = back.next;
   }
 
   @Override
