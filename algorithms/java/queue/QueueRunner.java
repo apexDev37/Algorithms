@@ -31,5 +31,19 @@ public class QueueRunner {
 
     faang.dequeue();
     System.out.println(faang);
+
+    // Instantiate queue without a capacity limit
+    Queue<String> cloudVendors = new LinkedQueue<>();
+
+    cloudVendors.enqueue("Heroku");
+    cloudVendors.enqueue("AWS");
+    cloudVendors.enqueue("GCP");
+    cloudVendors.enqueue("Azure");
+    cloudVendors.enqueue("Alibaba cloud");
+    cloudVendors.enqueue("Digital Ocean");
+    cloudVendors.enqueue("IBM cloud");
+
+    cloudVendors.dequeue();
+    System.out.println(cloudVendors);
   }
 }
