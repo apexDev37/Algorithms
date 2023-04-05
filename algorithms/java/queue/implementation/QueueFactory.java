@@ -13,4 +13,9 @@ public final class QueueFactory {
   public static <E> Queue<E> newReusable(int capacity) {
     return new CircularQueue<>(capacity);
   }
+
+  // Instantiate new linear queue with a variable size capacity
+  public static <E> Queue<E> newDynamic() {
+    return new LinkedQueue<>();
+  }
 }
