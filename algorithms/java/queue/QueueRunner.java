@@ -33,7 +33,7 @@ public class QueueRunner {
     System.out.println(faang);
 
     // Instantiate queue without a capacity limit
-    Queue<String> cloudVendors = new LinkedQueue<>();
+    Queue<String> cloudVendors = QueueFactory.newDynamic();
 
     cloudVendors.enqueue("Heroku");
     cloudVendors.enqueue("AWS");

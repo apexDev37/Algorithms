@@ -4,7 +4,7 @@ import com.apexdev.algorithms.java.queue.base.LinearDynamicQueue;
 
 import java.text.MessageFormat;
 
-public class LinkedQueue<E> extends LinearDynamicQueue<E> {
+class LinkedQueue<E> extends LinearDynamicQueue<E> {
 
   @Override
   public void enqueue(E element) {
