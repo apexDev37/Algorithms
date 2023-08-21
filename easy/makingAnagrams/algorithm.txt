@@ -4,9 +4,13 @@ Level: easy
 Author: amititkgp
 Solution: apexDev37
 
-    [Example]
-    Outline steps for your algorithmic approach:
 
-        1) Step one
-        2) Step two
+        1)  Check if s1 and s2 are anagrams.
+            If both strings are anagrams, then return true
+            Else return false.
+
+        2)  Return 0 if the two strings given are both anagrams, 
+            because no number of deletions are required - the strings 
+            are anagrams.
+
         3) Step three
