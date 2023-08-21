@@ -1,10 +1,10 @@
 """
 || HackerRank
-    Problem: 'problem name'
-    Level: 'problem level'
-    Author: 'problem author'
-    Implementation: 'your GitHub username'
-
+    Problem: Making Anagrams 
+    Level: easy
+    Author: amititkgp
+    Implementation: apexDev37
+    
     Status: PASSED - '# of test cases passed'
 """
 

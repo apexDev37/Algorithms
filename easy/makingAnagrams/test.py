@@ -11,7 +11,7 @@ import unittest
 
 
 """
-Tests for problem: 'Problem name'
+Tests for problem: Making Anagrams
 Script: main.py
 """
 
