@@ -10,14 +10,20 @@
 # on the HackerRank platform. 
 # Rename as per specified
 
-def function_name():
-    pass
+def making_anagrams(s1: str, s2: str) -> int:
+  if is_anagram(s1, s2):
+    return 0
+  return -1
 
+def is_anagram(s1: str, s2: str) -> bool:
+  if len(s1) != len(s2):
+    return False
+  return sorted(s1) == sorted(s2)
 
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+  s1, s2 = 'anagram', 'instagram'
+  print('Number of deletions to make anagram: ', making_anagrams(s1, s2))
 
 
 if __name__ == "__main__":
-    main()
+  main()
