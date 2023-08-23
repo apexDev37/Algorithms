@@ -1,8 +1,11 @@
 import unittest
 from unittest import TestCase
 
-from main import is_anagram, making_anagrams
-
+from main import (
+  is_anagram, 
+  making_anagrams,
+  get_intersection,
+)
 
 # ---------------------------- Tests ---------------------------- #
 
@@ -29,7 +32,21 @@ class FunctionalTestCase(TestCase):
     
     # Then
     self.assertEqual(actual, expected)
-
+  
+  def test_should_get_intersection_of_chars_between_two_given_strings(self) -> None:
+    # Given
+    s1 = 'abcdefabcdefd'
+    s2 = 'mnopqcdmnopqc'
+    expected = 'cd'
+    
+    # When
+    actual = get_intersection(s1, s2)
+    
+    # Then
+    self.assertIn(expected, s1)
+    self.assertIn(expected, s2)
+    self.assertCountEqual(actual, expected)
+  
 class IntegrationTestCase(TestCase):
   """
   Test case to test the integration and behavior of HackerRank entry-point. 
