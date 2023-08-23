@@ -20,6 +20,10 @@ def is_anagram(s1: str, s2: str) -> bool:
     return False
   return sorted(s1) == sorted(s2)
 
+def get_intersection(s1: str, s2: str) -> bool:
+  common_chars: set = set(s1) & set(s2)
+  return ''.join(common_chars)
+
 def main() -> None:
   s1, s2 = 'anagram', 'instagram'
   print('Number of deletions to make anagram: ', making_anagrams(s1, s2))
