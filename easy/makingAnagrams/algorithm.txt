@@ -13,4 +13,9 @@ Solution: apexDev37
             because no number of deletions are required - the strings 
             are anagrams.
 
-        3) Step three
+        3)  Get the set of characters that exist in both the s1 and s2.
+            (info) In terms of conceptual Venn diagrams, this would be
+            represented an intersection of the elements (characters)
+            shared between s1 and s2.
+
+        4)  
