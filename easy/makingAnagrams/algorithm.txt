@@ -18,4 +18,23 @@ Solution: apexDev37
             represented an intersection of the elements (characters)
             shared between s1 and s2.
 
-        4)  
+        4)  Truncate the "symmetric difference" of sets. This is the set
+            of chars that are present in any one of the strings, but not
+            present in both. If two strings have unequal length, truncate
+            both to be of equal length.
+
+            annotation: A Δ B = (A ∪ B) - (A ∩ B) 
+
+        5)  Given a string, count and map the frequency of each unique 
+            char in the string in a grouped and logical format.
+
+                [Example]
+
+                    given: str = 'anagram'
+                    result: Any = [
+                        'a' = frequency(3),
+                        'n' = frequency(1),
+                        'g' = frequency(1),
+                        'r' = frequency(1),
+                        'm' = frequency(1),
+                    ] 
