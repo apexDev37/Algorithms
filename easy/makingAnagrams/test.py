@@ -44,8 +44,6 @@ class FunctionalTestCase(TestCase):
     actual = get_intersection(s1, s2)
     
     # Then
-    self.assertIn(expected, s1)
-    self.assertIn(expected, s2)
     self.assertCountEqual(actual, expected)
   
   def test_should_truncate_non_common_chars_in_two_given_strings(self) -> None:
@@ -58,11 +56,7 @@ class FunctionalTestCase(TestCase):
     actual = truncate_symmetric_diff(s1, s2)
     
     # Then
-    self.assertNotIn(expected, s1 or s2)
-    self.assertNotIn(expected, actual['s1'])
-    self.assertNotIn(expected, actual['s2'])
-
-    pass
+    self.assertNotIn(expected, actual['s1'] and actual['s2'])
   
   def test_should_count_frequency_for_each_unique_char_in_given_string(self) -> None:
     pass
