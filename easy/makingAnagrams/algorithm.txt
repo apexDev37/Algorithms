@@ -15,7 +15,7 @@ Solution: apexDev37
 
         3)  Get the set of characters that exist in both the s1 and s2.
             (info) In terms of conceptual Venn diagrams, this would be
-            represented an intersection of the elements (characters)
+            represented as an intersection of the elements (characters)
             shared between s1 and s2.
 
         4)  Truncate the "symmetric difference" of sets. This is the set
