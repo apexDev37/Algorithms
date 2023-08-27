@@ -31,6 +31,16 @@ def truncate(chars: str, given: str) -> str:
   result = given.rstrip(chars)
   return result
 
+def count_char_frequency(value: str) -> dict[str, int]:
+  char_frequency = {}
+  for char in value:
+    if char in char_frequency.keys():
+      char_frequency[char] += 1
+    else:
+      char_frequency[char] = 1
+    
+  return char_frequency
+
 def main() -> None:
   s1, s2 = 'anagram', 'instagram'
   print('Number of deletions to make anagram: ', making_anagrams(s1, s2))
