@@ -7,6 +7,7 @@ from main import (
   get_intersection,
   truncate_symmetric_diff,
   count_char_frequency,
+  sum_frequency_diff,
 )
 
 # ---------------------------- Tests ---------------------------- #
@@ -69,6 +70,19 @@ class FunctionalTestCase(TestCase):
 
     # Then
     self.assertDictEqual(actual, expected)
+  
+  def test_should_sum_the_difference_for_each_char_frequency_for_two_given_strings(self) -> None:
+    # Given
+    s1 = {'b': 1, 'a': 1, 'c': 2, 'd': 1}
+    s2 = {'b': 1, 'a': 1, 'c': 1, 'd': 2}
+    expected = 2
+    
+    # When
+    actual = sum_frequency_diff(s1, s2)
+
+    # Then
+    self.assertNotEqual(s1, s2)
+    self.assertEqual(actual, expected)
     
     
 class IntegrationTestCase(TestCase):
