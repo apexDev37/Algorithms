@@ -41,6 +41,14 @@ def count_char_frequency(value: str) -> dict[str, int]:
     
   return char_frequency
 
+def sum_frequency_diff(s1: dict[str, int], s2: dict[str, int]) -> int:
+  sum = 0
+  common_chars = s1.keys()
+  assert len(s1.keys()) == len(s2.keys()) 
+  for char in common_chars:
+    sum += abs(s1[char] - s2[char])
+  return sum
+
 def main() -> None:
   s1, s2 = 'anagram', 'instagram'
   print('Number of deletions to make anagram: ', making_anagrams(s1, s2))
