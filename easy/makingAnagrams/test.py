@@ -103,6 +103,19 @@ class IntegrationTestCase(TestCase):
         
     # Then
     self.assertEqual(actual, 0)
+    
+  def test_should_return_number_of_deletions_required_to_make_anagrams(self) -> None:
+    # Given
+    s1 = 'abcd'
+    s2 = 'acde'
+    expected = 2
+    
+    # When
+    actual = self.under_test(s1, s2)
+        
+    # Then
+    self.assertEqual(actual,expected)
+    
   
   
 if __name__ == '__main__':
