@@ -43,9 +43,8 @@ def count_char_frequency(value: str) -> dict[str, int]:
 
 def sum_frequency_diff(s1: dict[str, int], s2: dict[str, int]) -> int:
   sum = 0
-  common_chars = s1.keys()
-  assert len(s1.keys()) == len(s2.keys()) 
-  for char in common_chars:
+  assert s1.keys() == s2.keys() 
+  for char in s1.keys():
     sum += abs(s1[char] - s2[char])
   return sum
 
