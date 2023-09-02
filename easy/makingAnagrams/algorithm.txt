@@ -38,3 +38,19 @@ Solution: apexDev37
                         'r' = frequency(1),
                         'm' = frequency(1),
                     ] 
+        
+        6)  Get the difference for each corresponding char in both 
+            s1 and s2. Sum the total difference of each char frequency
+            for both s1 and s2.
+
+                [Example]
+
+                    s1 = 'bacdc' 
+                    s2 = 'badcd'
+
+                    result = [
+                        'b': 1 - 1,
+                        'a': 1 - 1,
+                        'c': 2 - 1,
+                        'c': 1 - 2,
+                    ] 
