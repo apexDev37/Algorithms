@@ -10,6 +10,16 @@
 def making_anagrams(s1: str, s2: str) -> int:
   if is_anagram(s1, s2):
     return 0
+  
+  truncated = truncate_symmetric_diff(s1, s2)
+  if is_anagram(truncated['s1'], truncated['s2']):
+    return 0
+  
+  intersection = get_intersection(s1, s2)
+  s1_frequency = count_char_frequency(s1)
+  s2_frequency = count_char_frequency(s2)
+  
+  deletions = sum_frequency_diff(s1_frequency, s2_frequency)
   return -1
 
 def is_anagram(s1: str, s2: str) -> bool:
