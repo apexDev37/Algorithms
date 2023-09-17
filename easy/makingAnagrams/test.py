@@ -63,10 +63,11 @@ class FunctionalTestCase(TestCase):
   def test_should_count_frequency_for_each_unique_char_in_given_string(self) -> None:
     # Given
     s1 = 'bacdc'
+    intersection = 'abcd'
     expected = {'a': 1, 'b': 1, 'c': 2, 'd': 1,}
     
     # When
-    actual = count_char_frequency(s1)
+    actual = count_char_frequency(intersection, s1)
 
     # Then
     self.assertDictEqual(actual, expected)
@@ -108,7 +109,7 @@ class IntegrationTestCase(TestCase):
     # Given
     s1 = 'abcd'
     s2 = 'acde'
-    expected = 2
+    expected = 2  # be
     
     # When
     actual = self.under_test(s1, s2)
