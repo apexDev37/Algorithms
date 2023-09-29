@@ -5,15 +5,36 @@ Author: amititkgp
 Solution: apexDev37
 
 
-        1)  Check if s1 and s2 are anagrams.
-            If both strings are anagrams, then return true
-            Else return false.
+        1)  Optimization Technique
 
-        2)  Return 0 if the two strings given are both anagrams, 
-            because no number of deletions are required - the strings 
-            are anagrams.
+            - Check if s1 and s2 have the same characters with the same frequencies.
+            - If both strings are anagrams, return 0.
 
-        3)  Get the set of characters that exist in both the s1 and s2.
+        2)  Truncate Non-common Characters
+
+            Referred to as the "symmetric difference" of sets. This is the set of chars that are 
+            present in any one of the strings, but not present in both.
+
+            annotation: A Δ B = (A ∪ B) - (A ∩ B)
+
+            - Compute the "symmetric difference" of sets.
+            - Truncate the uncommon chars (symmetric difference) in s1 and s2.
+        
+        3)  Optimization Technique
+
+            - Check if truncated (s1 and s2) have the same characters with the same frequencies.
+            - If both strings are anagrams, compute the difference between the truncated and original strings.
+            - Return the difference as the number of deletions required to make anagrams.
+
+        3)  Compute Intersection (Common Chars)
+            
+            Referred to as the 'intersection' of sets. This is the set of characters that are 
+            present in both strings, indicating the common elements shared between them.
+
+            annotation: A ∩ B
+
+            - Return a 
+            Get the set of characters that exist in both the s1 and s2.
             (info) In terms of conceptual Venn diagrams, this would be
             represented as an intersection of the elements (characters)
             shared between s1 and s2.
