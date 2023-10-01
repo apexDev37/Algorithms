@@ -4,11 +4,18 @@ Level: easy
 Author: amititkgp
 Solution: apexDev37
 
+        Problem Statement:
+        Determine whether two given strings, s1 and s2, are anagrams of each other. 
+        Compute the minimum number of character deletions required from both strings 
+        to make them anagrams and return that count.
+
+        Algorithm:
 
         1)  Optimization Technique
 
             - Check if s1 and s2 have the same characters with the same frequencies.
             - If both strings are anagrams, return 0.
+            - Else, continue with execution.
 
         2)  Truncate Non-common Characters
 
@@ -22,37 +29,30 @@ Solution: apexDev37
         
         3)  Optimization Technique
 
-            - Check if truncated (s1 and s2) have the same characters with the same frequencies.
+            - Check if truncated (s1 and s2) are anagrams.
             - If both strings are anagrams, compute the difference between the truncated and original strings.
             - Return the difference as the number of deletions required to make anagrams.
+            - Else, continue with execution.
 
-        3)  Compute Intersection (Common Chars)
+        4)  Compute Intersection (Common Chars)
             
             Referred to as the 'intersection' of sets. This is the set of characters that are 
             present in both strings, indicating the common elements shared between them.
 
             annotation: A ∩ B
 
-            - Return a 
-            Get the set of characters that exist in both the s1 and s2.
-            (info) In terms of conceptual Venn diagrams, this would be
-            represented as an intersection of the elements (characters)
-            shared between s1 and s2.
+            - Return a string of non-duplicate chars that exist in both the s1 and s2.
 
-        4)  Truncate the "symmetric difference" of sets. This is the set
-            of chars that are present in any one of the strings, but not
-            present in both. If two strings have unequal length, truncate
-            both to be of equal length.
+        5)  Count String Char Frequency
 
-            annotation: A Δ B = (A ∪ B) - (A ∩ B) 
-
-        5)  Given a string, count and map the frequency of each unique 
-            char in the string in a grouped and logical format.
+            - Iterate through each char in a given string.
+            - Count the frequency for each char in the string.
+            - Return a dictionary mapping each char to it's frequency (char -> frequency).
 
                 [Example]
 
                     given: str = 'anagram'
-                    result: Any = [
+                    result: dict = [
                         'a' = frequency(3),
                         'n' = frequency(1),
                         'g' = frequency(1),
@@ -60,18 +60,15 @@ Solution: apexDev37
                         'm' = frequency(1),
                     ] 
         
-        6)  Get the difference for each corresponding char in both 
-            s1 and s2. Sum the total difference of each char frequency
-            for both s1 and s2.
+        6)  Compute Difference of Char Frequencies
+
+            - Iterate through each char item
+            - Compute the frequency difference between s1 and s2 for each char.
+            - Return the total sum of frequency difference between s1 and s2 for each char.
 
                 [Example]
 
-                    s1 = 'bacdc' 
-                    s2 = 'badcd'
+                    s1 = {'b': 1, 'a': 1, 'c': 3, 'd': 1, 'c': 2,} 
+                    s1 = {'b': 1, 'a': 2, 'c': 2, 'd': 1, 'c': 4,} 
 
-                    result = [
-                        'b': 1 - 1,
-                        'a': 1 - 1,
-                        'c': 2 - 1,
-                        'c': 1 - 2,
-                    ] 
+                    result = 4 
