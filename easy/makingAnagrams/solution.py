@@ -1,15 +1,16 @@
 """
 || HackerRank
-    Problem: Making Anagrams 
+    Problem: Making Anagrams
     Level: easy
     Author: amititkgp
     Implementation: apexDev37
-    
+
     Status: PASSED - '15 test cases passed on HackerRank'
 """
 
 # Copy and paste all your functional code from
 # from the HackerRank platform.
+
 
 def making_anagrams(s1: str, s2: str) -> int:
   if is_anagram(s1, s2):
@@ -17,10 +18,11 @@ def making_anagrams(s1: str, s2: str) -> int:
 
   # Optimization
   truncated = truncate_symmetric_diff(s1, s2)
-  deletions =  abs(len(s1) - len(truncated['s1'])) + abs(len(s2) - len(truncated['s2'])) 
+  deletions = abs(
+      len(s1) - len(truncated['s1'])) + abs(len(s2) - len(truncated['s2']))
   if is_anagram(truncated['s1'], truncated['s2']):
     return deletions
-  
+
   deletions += count_frequency_diff(truncated['s1'], truncated['s2'])
   return deletions
 
@@ -34,7 +36,7 @@ def is_anagram(s1: str, s2: str) -> bool:
 def truncate_symmetric_diff(s1: str, s2: str) -> dict[str, str]:
   uncommon_set = set(s1) ^ set(s2)
   uncommon_chars = ''.join(uncommon_set)
-  return {'s1': truncate(uncommon_chars, s1), 
+  return {'s1': truncate(uncommon_chars, s1),
           's2': truncate(uncommon_chars, s2)}
 
 
@@ -56,12 +58,12 @@ def get_intersection(s1: str, s2: str) -> str:
 
 
 def count_char_frequency(intersection: str, s: str) -> dict[str, int]:
-  assert set(intersection) == set(s) 
+  assert set(intersection) == set(s)
   char_freq = {char: s.count(char) for char in intersection}
   return char_freq
 
 
 def sum_frequency_diff(s1: dict[str, int], s2: dict[str, int]) -> int:
-  assert s1.keys() == s2.keys() 
+  assert s1.keys() == s2.keys()
   deletions = sum([abs(s1[char] - s2[char]) for char in s1.keys()])
   return deletions
