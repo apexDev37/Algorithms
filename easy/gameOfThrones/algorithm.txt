@@ -1,12 +1,17 @@
 [Pseudocode]
-Question: <HackerRank problem Name>
-Level: <HackerRank problem Level: [easy, medium, hard]>
-Author: <HackerRank problem Author>
-Solution: <your GitHub username>
+Question: Game of Thrones - I
+Level: Easy
+Author: amititkgp
+Solution: apexDev37 & 
 
-    [Example]
-    Outline steps for your algorithmic approach:
+        Problem Statement:
+        Given a string, determine if it can be rearranged into a palindrome.
+        Return the string YES or NO. 
 
-        1) Step one
-        2) Step two
-        3) Step three
+        Algorithm:
+        
+        1) Compute Char Frequency
+
+            - Iterate through a given string
+            - Count the frequency for each unique char in the string
+            - Return the map of (char -> freq)
