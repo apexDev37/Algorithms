@@ -1,23 +1,29 @@
 """
 || HackerRank
-    Problem: 'problem name' 
-    Level: 'problem level'
-    Author: 'problem author'
-    Implementation: 'your GitHub username'
+    Problem: Game of Thrones - I 
+    Level: Easy
+    Author: amititkgp
+    Implementation: apexDev37 &
 """
 
 # This is main entry point function to complete
 # on the HackerRank platform. 
 # Rename as per specified
 
-def function_name():
-    pass
+def game_of_thrones():
+  pass
 
+
+def count_char_frequency(value: str) -> dict[str, int]:
+  frequency = {
+    char: value.count(char) for char in set(value)}
+  return frequency
+  
 
 def main() -> None:
-    # Define your actual argument data here
-    print('Meaningful message output: ', function_name())
+  value = 'madam'
+  print(f'Is string "{value}" a palindrome: ', game_of_thrones(value))
 
 
 if __name__ == "__main__":
-    main()
+  main()
