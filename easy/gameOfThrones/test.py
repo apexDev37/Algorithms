@@ -1,9 +1,9 @@
 import unittest
 
 from main import (
-  count_char_frequency,
-  game_of_thrones,
-  is_palindrome,
+    count_char_frequency,
+    game_of_thrones,
+    is_palindrome,
 )
 
 
@@ -20,7 +20,7 @@ class TestCaseUnit(unittest.TestCase):
   """"
   Tests to cover unit and concrete implementation.
   """
-  
+
   def test_should_map_char_to_frequency_for_given_string(self) -> None:
     # Given
     s = 'baaxaab'
@@ -28,7 +28,7 @@ class TestCaseUnit(unittest.TestCase):
 
     # When
     actual = count_char_frequency(s)
-    
+
     # Then
     self.assertDictEqual(actual, expected)
 
@@ -36,14 +36,15 @@ class TestCaseUnit(unittest.TestCase):
     # Given
     char_freq_map = {'b': 2, 'a': 4, 'x': 1}
     expected = True
-    
+
     # When
     actual = is_palindrome(char_freq_map)
-    
+
     # Then
     self.assertIsInstance(actual, bool)
     self.assertEqual(actual, expected)
-    
+
+
 class TestCaseIntegration(unittest.TestCase):
   """
   Tests to cover the integration and behavior of HackerRank entry-point.
@@ -54,15 +55,16 @@ class TestCaseIntegration(unittest.TestCase):
   def setUp(self) -> None:
     super().setUp()
     self.entry_point = game_of_thrones
-  
-  def test_should_return_binary_answer_if_string_can_be_palindrome(self) -> None:
+
+  def test_should_return_binary_answer_if_string_can_be_palindrome(
+          self) -> None:
     # Given
     s = 'cdefghmnopqrstuvw'
     expected = 'NO'
-    
+
     # When
     actual = self.entry_point(s)
-    
+
     # Then
     self.assertIsInstance(actual, str)
     self.assertIn(actual, ['YES', 'NO'])
