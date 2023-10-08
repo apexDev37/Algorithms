@@ -2,16 +2,26 @@
 Question: Game of Thrones - I
 Level: Easy
 Author: amititkgp
-Solution: apexDev37 & 
+Solution: apexDev37 &
 
         Problem Statement:
         Given a string, determine if it can be rearranged into a palindrome.
-        Return the string YES or NO. 
+        Return the string YES or NO.
 
         Algorithm:
-        
+       
         1) Compute Char Frequency
 
             - Iterate through a given string
             - Count the frequency for each unique char in the string
             - Return the map of (char -> freq)
+
+        2) Check if valid Palindrome
+           
+            - Check the total number of odd char frequencies (counts)
+            - Return False if the odd count is greater than one, else True
+       
+        3) Return Binary Answer
+
+            - Return 'YES' if the string is a valid palindrome
+            - Else return 'NO' if the string is not a valid palindrome
